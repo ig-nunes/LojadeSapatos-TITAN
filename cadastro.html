@@ -8,12 +8,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  <title>Lojinha</title>
+  <title>Cadastro</title>
 </head>
 <body id="boody">
   <header>
     
-      <nav class="navbar navbar-expand-lg fixed-top  d-flex" id="heeader">
+      <nav class="navbar navbar-expand-lg top  d-flex" id="heeader">
         <!-- logo -->
           <a href="#" class=" ml-5">
           <img class="" id="logo" src="" alt="logo">
@@ -42,21 +42,124 @@
       <div class="collapse navbar-collapse justify-content-center"
       id="navbar-links">
         <div class="navbar-nav">
-          <a class="ml-3 text-dark text-decoration-none" href="index.html" id="home-menu"><i class="bi bi-house-door-fill"></i> Home</a>
-          <a class="ml-3 text-dark text-decoration-none" href="produtos.html" id="products-menu"><i class="bi bi-emoji-heart-eyes-fill"></i> Produtos</a>
-          <a class="ml-3 text-dark text-decoration-none" href="" id="cart-menu"><i class="bi bi-cart-fill"></i> Carrinho</a>
-          <a class="ml-3 text-dark text-decoration-none" href="" id="favorites-menu"><i class="bi bi-bag-heart-fill"></i> Favoritos</a>
-          <a class="ml-3 text-dark text-decoration-none" href="login.html" id="login-menu"><i class="bi bi-person-fill"></i> Login</a>
-          <a class="ml-3 text-dark text-decoration-none" href="" id="about-menu"><i class="bi bi-award-fill"></i> Sobre nós</a>
+          <a class="ml-3 text-dark text-decoration-none" href="/index.html" id="home-menu"><i class="bi bi-house-door-fill"></i> Home</a>
+          <a class="ml-3 text-dark text-decoration-none" href="/produtos.html" id="products-menu"><i class="bi bi-emoji-heart-eyes-fill"></i> Produtos</a>
+          <a class="ml-3 text-dark text-decoration-none" href="nav-item nav-link" id="cart-menu"><i class="bi bi-cart-fill"></i> Carrinho</a>
+          <a class="ml-3 text-dark text-decoration-none" href="nav-item nav-link" id="favorites-menu"><i class="bi bi-bag-heart-fill"></i> Favoritos</a>
+          <a class="ml-3 text-dark text-decoration-none" href="/login.html" id="login-menu"><i class="bi bi-person-fill"></i> Login</a>
+          <a class="ml-3 text-dark text-decoration-none" href="nav-item nav-link" id="about-menu"><i class="bi bi-award-fill"></i> Sobre nós</a>
         </div>
       </div>
        <!--end navegacao -->
       </nav>
   </header>
+  
+<main>
+  <div class="container bg-white">
+    <h1 class="m-4 pt-4">
+      Página de Cadastro
+    </h1>
+    <hr>
+    <form>
+      <div class="row m-4">
+        <div class="col-sm-12 col-md-6">
+          
+          <fieldset class="row">
+            <legend>Dados Pessoais</legend> 
+            <div class="col-md-6 col-xl-10 mb-3">
+              <label for="nome" class="form-label">Nome</label>
+              <input type="text" class="form-control" id="nome">
+           </div>
+            <div class="col-md-6 col-xl-5 mb-3">
+              <label for="cpf" class="form-label">CPF</label>
+              <span class="text-muted">(somente números)</span>
+              <input type="text" class="form-control" id="cpf">
+            </div>
+            <div class="col-md-6 col-xl-4 mb-3">
+              <label for="datadenascimento" class="form-label">Data de Nascimento</label>
+              <input type="date" class="form-control" id="datadenascimento">
+            </div>
+          </fieldset>
+          
+          <fieldset class="row">
+            <legend>Contatos</legend>
+            <div class="col-md-6 col-xl-10 mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email">
+           </div>
+           <div class="col-md-6 col-xl-7 mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="telefone" placeholder="(71) 999999999">
+            <span class="text-muted">(com DDD, somente números)</span>
+         </div>
+         
+         <div class="form-check mt-5">
+          <input type="checkbox" class="form-check-input" value="" id="promocoes">
+          <label for="promocoes" class="form-check-label">Desejo receber informações sobre promoções.</label>
+          <div class="mb-3">
+            <input type="button" value="Criar meu cadastro" class="btn btn-info btn-outline-light"
+            onclick="window.alert('Login criado com sucesso!')">
+            <a class="btn btn-danger btn-outline-light"  href="/index.html">Cancelar</a>
+          </div>
 
+
+          </fieldset>
+
+        </div>
+        
+        <div class="col-sm-12 col-md-6">
+          
+          <fieldset class="row">
+            <legend>Endereço</legend> 
+            <div class="col-md-6 col-xl-10 mb-3">
+              <label for="logradouro" class="form-label">Logradouro</label>
+              <input type="text" class="form-control" id="logradouro">
+           </div>
+            <div class="col-md-6 col-xl-5 mb-3">
+              <label for="cep" class="form-label">CEP</label>
+              <span class="text-muted">(somente números)</span>
+              <input type="text" class="form-control" id="cep">
+            </div>
+            <div class="col-md-6 col-xl-5 mb-3">
+              <label for="cep" class="form-label">Número</label>
+              <span class="text-muted">(somente números)</span>
+              <input type="text" class="form-control" id="cep">
+            </div>
+            <div class="col-md-6 col-xl-10 mb-3">
+              <label for="complemento" class="form-label">Complemento</label>
+              <input type="text" class="form-control" id="complemento">
+           </div>
+          </fieldset>
+          
+          <fieldset class="row">
+            <legend class="mb-3">Login de acesso</legend>
+            <div class="col-md-6 col-xl-10 mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="text" class="form-control" id="email">
+           </div>
+         <div class="col-md-6 col-xl-10 mb-3">
+          <label for="senha" class="form-label">Senha</label>
+          <input type="password" class="form-control" id="senha">
+       </div>
+       <div class="col-md-6 col-xl-10 mb-5">
+        <label for="confirmesuasenha" class="form-label">Confirme sua Senha</label>
+        <input type="password" class="form-control" id="confirmesuasenha">
+     </div>
+          </fieldset>
+        
+        </div>
+
+      </div>
+      <hr>
+      
+
+      </div>
+    </form>
+  </div>
+</main>
   
    <!-- Footer -->
-   <footer class="d-flex container-fluid fixed-bottom pt-3 pb-1" id="foooter">
+   <footer class="d-flex container-fluid bottom pt-2 pb-1" id="foooter">
     
        <!-- Logo -->
     <img class="d-flex m-2" src="" alt="logo">
