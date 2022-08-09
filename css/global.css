@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container {
+    width: 80%;
+    margin: 100px 0 100px 0;
+    padding: 0;
+
+}
+
+
+/* ------------- HEADER e FOOTER ------------- */
+
+
+#heeader, #foooter {
+  background: #e9f0f2;
+}
+
+#busca-nav {
+    text-align: center;
+}
+
+#body {
+  background: #d5e2f2;
+}

@@ -1,0 +1,136 @@
+
+/* ------------- BANNER ------------- */
+
+.banner, .produtos {
+    display: flex;
+    justify-content: center;
+
+    /* background-color: #D5E2F2; */
+}
+
+.carousel-control-prev, .carousel-control-next {
+    display: none;
+}
+
+.carousel-indicators {
+    height: 15%;
+    align-items: center;
+}
+
+.indicators {
+    width: 120px;
+    height: 15px;
+
+    border: none;
+    border-radius: 30px;
+    background-color: #A5D4FF;
+    
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.indicators:focus {
+    outline: none;
+}
+
+.indicators:hover {
+    transition: 0.5s;
+    background-color: #728dfa;
+}
+
+.active {
+    background-color: #FFFFFF;
+    border-radius: 30px;
+}
+
+
+/* ------------- PROPAGANDA ------------- */
+
+.substituto {
+    /* width: 100vw; */
+    height: 200px;
+
+    background-color: #E9F0F2;
+}
+
+
+
+/* ------------- PRODUTOS ------------- */
+
+
+.produtos-titulo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 50%;
+    height: 80px;
+
+    border: solid black 1px;
+    background-color: #FFFFFF;
+}
+
+.produtos-titulo h1 {
+    font-size: 1.5em;
+
+    padding-left: 10%;
+}
+
+.categoria {
+    margin:40px 0 40px 0;
+}
+
+.categoria-titulo {
+    height: 50px;
+    align-items: center;
+
+    border: solid black 1px;
+    background-color: #FFFFFF;
+    
+    margin-bottom: 20px;
+}
+
+.categoria-titulo h2 {
+    font-size: 1em;
+    font-weight: bold;
+
+    padding-left: 1em;
+}
+
+.fileira-produtos{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-produtos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 20%;
+    height: 300px;
+
+    border: solid black 1px;
+    background-color: #FFFFFF;
+}
+
+.card-produtos a {
+    text-decoration: none;
+    text-align: center;
+    justify-content: center;
+
+    color: #000000;
+}
+
+.card-produtos a img {
+    width: 100%;
+    height: auto;
+}
+
+.produto-preco {
+    text-shadow: 1.5px 1.5px 4px rgb(98, 98, 98);
+}
+
+.produto-parcela {
+    color: #838383;
+}

@@ -1,0 +1,130 @@
+
+/* ------------- Carrinho ------------- */
+
+.carrinho {
+    display: flex;
+    justify-content: center;
+}
+
+.carrinho-head {
+    justify-content: space-between;
+}
+
+.carrinho-titulo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 40%;
+    height: 80px;
+
+    border: solid black 1px;
+    background-color: #FFFFFF;
+}
+
+.carrinho-titulo h1 {
+    font-size: 1.5em;
+
+    padding-left: 10%;
+}
+
+.carrinho-preco {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 20%;
+    height: 80px;
+    
+    border: solid black 1px;
+    background-color: #FFFFFF;
+}
+
+.carrinho-preco p {
+    font-size: 1em;
+    font-weight: bold;
+
+    margin: 0;
+    padding: 0;
+}
+
+.categoria {
+    margin:40px 0 40px 0;
+}
+
+.categoria-titulo {
+    height: 50px;
+    align-items: center;
+
+    border: solid black 1px;
+    background-color: #FFFFFF;
+    
+    margin-bottom: 20px;
+}
+
+.categoria-titulo h2 {
+    font-size: 1.2em;
+    padding-left: 1em;
+}
+
+.fileira-produtos {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-produtos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 20%;
+    height: 300px;
+
+    border: solid black 1px;
+    background-color: #FFFFFF;
+}
+
+.card-produtos a {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    text-align: center;
+    
+    height: 100%;
+
+    color: #000000;
+}
+
+.card-produtos a img {
+    width: 100%;
+    height: auto;
+}
+
+.produto-preco {
+    text-shadow: 1.5px 1.5px 4px rgb(98, 98, 98);
+}
+
+.produto-parcela {
+    color: #838383;
+}
+
+.carrinho-footer {
+    justify-content: space-between;
+}
+
+/* .carrinho-finalizar {
+    width: 45%;
+    height: 100%;
+} */
+
+.btn-finalizar {
+    font-weight: bold;
+
+    width: 45%;
+    height: 80px;
+
+    border: solid black 1px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+}
