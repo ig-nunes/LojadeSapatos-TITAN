@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  <title>Recuperar senha</title>
+  <title>Lojinha</title>
 </head>
+
 <body id="boody">
+  <!-- Header -->
   <header>
     
       <nav class="navbar navbar-expand-lg top  d-flex" id="heeader">
         <!-- logo -->
           <a href="#" class=" ml-5">
-          <img class="" id="logo" src="" alt="logo">
+          <img class="" id="logo" src="../img/logo.png" alt="logo">
           </a>
         <!-- end logo -->
 
@@ -38,53 +40,28 @@
         </button>
         <!-- end menu hamburguer -->
         
-       <!--navegacao -->
+        <!--navegacao -->
       <div class="collapse navbar-collapse justify-content-center"
       id="navbar-links">
         <div class="navbar-nav">
-          <a class="ml-3 text-dark text-decoration-none" href="index.html" id="home-menu"><i class="bi bi-house-door-fill"></i> Home</a>
-          <a class="ml-3 text-dark text-decoration-none" href="produtos.html" id="products-menu"><i class="bi bi-emoji-heart-eyes-fill"></i> Produtos</a>
-          <a class="ml-3 text-dark text-decoration-none" href="" id="cart-menu"><i class="bi bi-cart-fill"></i> Carrinho</a>
-          <a class="ml-3 text-dark text-decoration-none" href="" id="favorites-menu"><i class="bi bi-bag-heart-fill"></i> Favoritos</a>
-          <a class="ml-3 text-dark text-decoration-none" href="login.html" id="login-menu"><i class="bi bi-person-fill"></i> Login</a>
-          <a class="ml-3 text-dark text-decoration-none" href="" id="about-menu"><i class="bi bi-award-fill"></i> Sobre nós</a>
+          <a class="ml-3 text-dark text-decoration-none" href="../pages/index.html" id="home-menu"><i class="bi bi-house-door-fill"></i> Home</a>
+          <a class="ml-3 text-dark text-decoration-none" href="../pages/produtos.html" id="products-menu"><i class="bi bi-emoji-heart-eyes-fill"></i> Produtos</a>
+          <a class="ml-3 text-dark text-decoration-none" href="../pages/carrinho.html" id="cart-menu"><i class="bi bi-cart-fill"></i> Carrinho</a>
+          <a class="ml-3 text-dark text-decoration-none" href="../pages/favoritos.html" id="favorites-menu"><i class="bi bi-bag-heart-fill"></i> Favoritos</a>
+          <a class="ml-3 text-dark text-decoration-none" href="../pages/login.html" id="login-menu"><i class="bi bi-person-fill"></i> Login</a>
+          <a class="ml-3 text-dark text-decoration-none" href="../pages/sobrenos.html" id="about-menu"><i class="bi bi-award-fill"></i> Sobre nós</a>
         </div>
       </div>
        <!--end navegacao -->
       </nav>
   </header>
-  
-  <main class="pt-5 pb-5">
-    
-    <div class="container bg-white col-md-9 pt-4 pb-4 ">
-      <div class="row justify-content-center">
-        <form class="col-sm-10 col-md-8 col-lg-6">
-          <br>
-      <h1 class="mb-1">Recuperar senha</h1>
-      <br>
-      <div class="form-floating mb-3">
-        <label for="textemail">E-mail</label>
-        <input type="email" class="form-control" autofocus id="textemail" placeholder="Digite seu email">
-      </div>
-
-        <button class="btn btn-lg btn-info" type="button" id="botao-login" onclick="window.location.href='/confirmerecuperacaosenha.html'"> Recuperar senha</button>
-        <hr class="bg-black">
-        <p class="mt-3">
-          Ainda não é cadastrado? <a href="/cadastro.html">Clique aqui</a> para se cadastrar.
-        </p>
-
-    
-    </div>
-    
-    </div>
-
-  </main>
+  <!-- end Header -->
   
    <!-- Footer -->
-   <footer class="d-flex container-fluid bottom pt-2 pb-1" id="foooter">
+   <footer class="d-flex container-fluid bottom pt-3 pb-1" id="foooter">
     
        <!-- Logo -->
-    <img class="d-flex m-2" src="" alt="logo">
+    <img class="d-flex m-2" src="../img/logo2.png" alt="logo">
     <!-- container -->
     <section class="container">
       <!-- menus -->
@@ -122,19 +99,19 @@
           <!-- links -->
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a href="#" class="text-dark text-decoration-none">Minha conta</a>
+              <a href="../pages/login.html" class="text-dark text-decoration-none">Minha conta</a>
             </li>
 
             <li class="nav-item">
-              <a href="#" class="text-dark text-decoration-none">Meus pedidos</a>
+              <a href="../pages/meuspedidos.html" class="text-dark text-decoration-none">Meus pedidos</a>
             </li>
 
             <li class="nav-item">
-              <a href="#" class="text-dark text-decoration-none">Rastrear meus pedidos</a>
+              <a href="../pages/rastrearmeuspedidos.html" class="text-dark text-decoration-none">Rastrear meus pedidos</a>
             </li>
 
             <li class="nav-item">
-              <a href="#" class="text-dark text-decoration-none">Troca e devoluções</a>
+              <a href="../pages/trocaedevolucoes.html" class="text-dark text-decoration-none">Troca e devoluções</a>
             </li>
           </ul>
         </article>
@@ -148,11 +125,11 @@
           <!-- links -->
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a href="#" class="text-dark text-decoration-none"><i class="bi bi-shop"></i> Sobre a loja</a>
+              <a href="../pages/sobrenos.html" class="text-dark text-decoration-none"><i class="bi bi-shop"></i> Sobre a loja</a>
             </li>
 
             <li class="nav-item">
-              <a href="#" class="text-dark text-decoration-none"><i class="bi bi-journal-bookmark"></i> Politica e privacidade</a>
+              <a href="../pages/politicaeprivacidade.html" class="text-dark text-decoration-none"><i class="bi bi-journal-bookmark"></i> Politica e privacidade</a>
             </li>
           </ul>
         </article>
@@ -167,19 +144,19 @@
           <!-- links -->
           <ul class="nav flex-column">
             <li class="nav-item">
-              <a href="#" class="text-dark text-decoration-none"> <i class="bi bi-instagram"></i> Instagram</a>
+              <a href="instagram.com" target="_blank" class="text-dark text-decoration-none"> <i class="bi bi-instagram"></i> Instagram</a>
             </li>
 
             <li class="nav-item ellipsis">
-              <a href="#" class="text-dark text-decoration-none"><i class="bi bi-twitter"></i> Twitter</a>
+              <a href="twitter.com" target="_blank" class="text-dark text-decoration-none"><i class="bi bi-twitter"></i> Twitter</a>
             </li>
 
             <li class="nav-item">
-              <a href="#" class="text-dark text-decoration-none"><i class="bi bi-linkedin"></i> Linkedin
+              <a href="linkedin.com" target="_blank" class="text-dark text-decoration-none"><i class="bi bi-linkedin"></i> Linkedin
             </li>
 
             <li class="nav-item ">
-              <a href="#" class="text-dark text-decoration-none"><i class="bi bi-whatsapp"></i> Whatsapp</a>
+              <a href="google.com" target="_blank" class="text-dark text-decoration-none"><i class="bi bi-whatsapp"></i> Whatsapp</a>
             </li>
           </ul>
         </article>
