@@ -1,3 +1,7 @@
+*{
+  font-family: 'Poppins', sans-serif;
+
+}
 #heeader,
 #foooter {
   background: #e9f0f2;
@@ -15,6 +19,16 @@ p {
   font-size: 1em;
   color: #777;
 }
+h6{
+  display: flex;
+  justify-content: center;
+}
+
+#navbar-links{
+  font-family: 'Poppins', sans-serif;
+}
+
+/* principal - main */
 .principal {
   width: 100%;
   float: left;
@@ -63,7 +77,8 @@ p {
 .onde-estamos i {
   margin-right: 5px;
 }
-/*Newsletter*/
+
+/* newsletter */
 .newsletter {
   width: 100%;
   float: left;
@@ -102,4 +117,21 @@ p {
   border-radius: 5px;
   float: right;
   cursor: pointer;
+}
+
+/* footer */
+
+.d-flex container-fluid{
+  display: flex;
+  justify-content: center;
+
+}
+.footer-list{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+li{
+  margin-left: 10px;
 }
