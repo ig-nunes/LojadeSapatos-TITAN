@@ -19,14 +19,6 @@ p {
   font-size: 1em;
   color: #777;
 }
-h6{
-  display: flex;
-  justify-content: center;
-}
-
-#navbar-links{
-  font-family: 'Poppins', sans-serif;
-}
 
 /* principal - main */
 .principal {
@@ -119,19 +111,3 @@ h6{
   cursor: pointer;
 }
 
-/* footer */
-
-.d-flex container-fluid{
-  display: flex;
-  justify-content: center;
-
-}
-.footer-list{
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-li{
-  margin-left: 10px;
-}

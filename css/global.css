@@ -4,10 +4,8 @@
     padding: 0;
     box-sizing: border-box;
 
-    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'Poppins', sans-serif;
 }
-
-
 
 .container {
     width: 80%;
@@ -35,4 +33,22 @@
 #logo, .logo-footer {
   width: 180px;
   height: auto;
+}
+.d-flex container-fluid{
+  display: flex;
+  justify-content: center;
+
+}
+.footer-list{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+li{
+  margin-left: 10px;
+}
+h6{
+  display: flex;
+  justify-content: center;
 }
