@@ -1,3 +1,7 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
 
 /* ------------- BANNER ------------- */
 
@@ -72,6 +76,7 @@
 
 .produtos-titulo h1 {
     font-size: 1.5em;
+    /* font-family: 'Poppins', sans-serif; */
 
     padding-left: 10%;
 }

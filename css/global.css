@@ -1,8 +1,12 @@
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    /* font-family: 'Poppins', sans-serif; */
 }
+
 
 
 .container {
@@ -26,4 +30,9 @@
 
 #body {
   background: #d5e2f2;
+}
+
+#logo, .logo-footer {
+  width: 180px;
+  height: auto;
 }
