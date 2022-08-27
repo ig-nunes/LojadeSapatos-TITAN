@@ -1,3 +1,5 @@
+/* Página login */
+
 .area-login{
     display: flex;
     height: 100vh;
@@ -42,4 +44,70 @@ form [type="submit"]{
 }
 a{
     text-decoration: none;
+}
+
+/* Página recuperar a senha */
+.recuperar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e9f0f2;
+    width: 1000px;
+    height: 300px;
+    padding: 35px;
+    border-radius: 8px;
+}
+
+.recuperar input{
+    margin-top: 10px;
+    border: none;
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 8px;
+    padding-left: 10px;
+
+}
+
+.recuperar form{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+.recuperar img{
+    width: 90px;
+    height: auto;
+}
+#enviar{
+    width: 110%;
+    text-decoration: none;
+    background-color: #5a8dcc ;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+.cadastrar {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+.container{
+    background-color: #e9f0f2;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+}
+#botaocriar{
+    border-radius: 10px;
+    
+}
+.container img{
+    width: 100px;
+    height: auto;
+    margin-left: 500px;
+    margin-top: 12px;
+}
+.container h2{
+    margin-left: 400px
 }
