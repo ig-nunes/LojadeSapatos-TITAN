@@ -1,0 +1,18 @@
+
+{{#with produto}}
+<div class="card">
+    <div class="card-body">
+        <h4>Nome: {{ nome }}</h4>
+        <h4>preco: {{ preco }}</h4>
+        <h4>Quantidade em Estoque: {{ quantEstoque }}</h4>
+        <h4>Categoria: {{ categoria }}</h4>
+        <h4>Marca: {{ marca }}</h4>
+        <a href="/admin/cupons/edit/{{_id}}"><button class="btn btn-success">Editar produto</button></a>
+        <form action="/admin/cupons/deletar" method="POST">
+            <input type="hidden" name="id" value="{{_id}}">
+            <button type="submit" class="btn btn-danger">Deletar produto</button>
+        </form>
+    </div>
+</div>
+
+{{/with}}

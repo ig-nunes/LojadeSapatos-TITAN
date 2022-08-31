@@ -1,0 +1,20 @@
+<h2>Lista de Cupons:</h2>
+<hr>
+<a href="/admin/cupons/add"><button class="btn btn-info m-4">Novo Cupom</button></a>
+
+
+{{#each cupons}}
+        <div class="card">
+            <div class="card-body">
+                <h4>Nome: {{ nome }}</h4>
+                <h4>Desconto: {{ desconto }}</h4>
+                <a href="/admin/cupons/edit/{{_id}}"><button class="btn btn-success">Editar cupom</button></a>
+                <form action="/admin/cupons/deletar" method="POST">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button type="submit" class="btn btn-danger">Deletar cupom</button>
+                </form>
+            </div>
+        </div>
+{{else}}
+    <h4>Nenhum cupom registrado</h4>
+{{/each}}

@@ -1,0 +1,23 @@
+<h2>Lista de Produtos:</h2>
+<hr>
+<a href="/admin/produtos/add"><button class="btn btn-info m-4">Novo Produto</button></a>
+
+
+{{#each produtos}}
+        <div class="card">
+            <div class="card-body">
+                <h4>Nome: {{ nome }}</h4>
+                <h4>preco: {{ preco }}</h4>
+                <h4>Quantidade em Estoque: {{ quantEstoque }}</h4>
+                <h4>Categoria: {{ categoria }}</h4>
+                <h4>Marca: {{ marca }}</h4>
+                <a href="/admin/produtos/edit/{{_id}}"><button class="btn btn-success">Editar produto</button></a>
+                <form action="/admin/produtos/deletar" method="POST">
+                    <input type="hidden" name="id" value="{{_id}}">
+                    <button type="submit" class="btn btn-danger">Deletar produto</button>
+                </form>
+            </div>
+        </div>
+{{else}}
+    <h4>Nenhum produto registrado</h4>
+{{/each}}
