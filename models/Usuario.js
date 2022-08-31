@@ -15,6 +15,13 @@ const Usuario = new Schema({
         type: String,
         required:true,
     },
+    eAdmin: {
+        type: Number,
+        default:0,
+    },
 })
+
+
+
 
 mongoose.model("usuarios",Usuario)

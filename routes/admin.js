@@ -5,8 +5,7 @@ require('../models/Produto')
 const Produto = mongoose.model('produtos')
 require('../models/Cupom')
 const Cupom = mongoose.model('cupons')
-require('../models/Postagem')
-const Postagem = mongoose.model('postagens')
+const {eAdmin} = require("../helpers/eAdmin")
 
 
 
@@ -16,20 +15,16 @@ const marcas = ['marca 1', 'marca 2', 'marca 3']
 
 //http://localhost:8088/admin
 // pegando o view/admim/index
-router.get('/',(req,res) => {
+router.get('/',eAdmin,(req,res) => {
   res.render('admin/index')
 })
 
-// http://localhost:8088/admin/posts
-router.get('/posts',(req,res) => {
-  res.send('Pagina de posts')
-})
 
 
 //   CUPONS:
 
 // http://localhost:8088/admin/cupons
-router.get('/cupons', (req, res) => {
+router.get('/cupons',eAdmin,(req, res) => {
   Cupom.find({}).then((cupons) => {
     res.render('admin/cupons', { cupons })
   })
@@ -40,7 +35,7 @@ router.get('/cupons', (req, res) => {
 })
 
 //http://localhost:8088/admin/cupons/buscar/:id
-router.get('/cupons/buscar/:id', (req, res) => {
+router.get('/cupons/buscar/:id',eAdmin,(req, res) => {
   const { id } = req.params
   Cupom.findById(id).then((cupom) => {
     if (cupom === null) {
@@ -58,12 +53,12 @@ router.get('/cupons/buscar/:id', (req, res) => {
 
 
 // http://localhost:8088/admin/cupons/add
-router.get('/cupons/add', (req,res) => {
+router.get('/cupons/add',eAdmin,(req,res) => {
   res.render('admin/addcupom')
 })
 
 //http://localhost:8088/admin/cupons/novo
-router.post('/cupons/novo', (req, res) => {
+router.post('/cupons/novo',eAdmin, (req, res) => {
   var erros = [] // validacao para evitar erros do usuario
 
   if (!req.body.nome || typeof req.body.nome == undefined || req.body.nome == null) {
@@ -103,7 +98,7 @@ router.post('/cupons/novo', (req, res) => {
 })
 
 //http://localhost:8088/admin/cupons/edit/:id
-router.get('/cupons/edit/:id', (req, res) => {
+router.get('/cupons/edit/:id',eAdmin,(req, res) => {
   const { id } = req.params 
   Cupom.findById(id).then(( cupom ) => { 
     res.render('admin/editcupons', { cupom: cupom })
@@ -113,29 +108,10 @@ router.get('/cupons/edit/:id', (req, res) => {
   })
 })
 
-//http://localhost:8088/admin/produtos/edit
-router.post('/cupons/edit', (req, res) => { 
-  Cupom.findOne({ _id: req.body.id }).then((cupom) => { 
 
-    cupom.nome = req.body.nome
-    cupom.desconto = req.body.desconto
-
-    cupom.save().then(() => { 
-      req.flash('success_msg', 'Cupom editado com sucesso!')
-      res.redirect('/admin/cupons')
-    }).catch((err) => { 
-      req.flash('error_msg', 'Houve um erro interno ao salvar a edicao do cupom')
-      res.redirect('/admin/cupons')
-    })
-
-  }).catch((err) => { 
-    req.flash('error_msg', 'Houve um erro ao editar o cupom')
-    res.redirect('/admin/cupons')
-  })
-})
 
 //http://localhost:8088/admin/cupons/deletar
-router.post("/cupons/deletar", (req, res) => {
+router.post("/cupons/deletar",eAdmin,(req, res) => {
   Produto.findByIdAndDelete({ _id: req.body.id }).then(() => {
     req.flash('sucess_msg', 'Cupom deletado com sucesso!')
     res.redirect('/admin/cupons')
@@ -151,7 +127,7 @@ router.post("/cupons/deletar", (req, res) => {
 //  PRODUTOS:
 
 //http://localhost:8088/admin/produtos
-router.get('/produtos', (req, res) => {
+router.get('/produtos',eAdmin,(req, res) => {
   Produto.find({}).then((produtos) => {
     res.render('admin/produtos', { produtos })
   }).catch((err) => { 
@@ -161,7 +137,7 @@ router.get('/produtos', (req, res) => {
 })
 
 //http://localhost:8088/admin/produtos/buscar/:id
-router.get('/produtos/buscar/:id', (req, res) => {
+router.get('/produtos/buscar/:id',eAdmin,(req, res) => {
   const { id } = req.params
   Produto.findById(id).then((produto) => {
     if (produto === null) {
@@ -179,7 +155,7 @@ router.get('/produtos/buscar/:id', (req, res) => {
 
 
 //http://localhost:8088/admin/produtos/add
-router.get('/produtos/add', (req,res) => {
+router.get('/produtos/add',eAdmin,(req,res) => {
   res.render('admin/addprodutos', { categorias, marcas })
 })
 
@@ -191,7 +167,7 @@ router.get('/produtos/add', (req,res) => {
 
 
 //http://localhost:8088/admin/produtos/novo
-router.post('/produtos/novo', (req, res) => {
+router.post('/produtos/novo',eAdmin,(req, res) => {
   var erros = [] //validacao para evitar erros do usuario
 
   if (!req.body.nome || typeof req.body.nome == undefined || req.body.nome == null) {
@@ -230,7 +206,7 @@ router.post('/produtos/novo', (req, res) => {
 })
 
 //http://localhost:8088/admin/produtos/edit/:id
-router.get('/produtos/edit/:id', (req, res) => {
+router.get('/produtos/edit/:id',eAdmin,(req, res) => {
   const { id } = req.params 
   Produto.findById(id).then(( produto ) => { 
     res.render('admin/editprodutos', { produto: produto, categorias, marcas })
@@ -241,7 +217,7 @@ router.get('/produtos/edit/:id', (req, res) => {
 })
 
 //http://localhost:8088/admin/produtos/edit
-router.post('/produtos/edit', (req, res) => { 
+router.post('/produtos/edit',eAdmin,(req, res) => { 
   Produto.findOne({_id: req.body.id }).then((produto) => { 
 
     produto.nome = req.body.nome
@@ -265,7 +241,7 @@ router.post('/produtos/edit', (req, res) => {
 })
   
 
-router.post("/produtos/deletar", (req, res) => {
+router.post("/produtos/deletar",eAdmin,(req, res) => {
   Produto.findByIdAndDelete({ _id: req.body.id }).then(() => {
     req.flash('sucess_msg', 'Produto deletado com sucesso!')
     res.redirect('/admin/produtos')
@@ -275,100 +251,36 @@ router.post("/produtos/deletar", (req, res) => {
 })
 })
 
+//http://localhost:8088/admin/produtos/edit
+router.post('/cupons/edit',eAdmin,(req, res) => { 
+  Cupom.findOne({ _id: req.body.id }).then((cupom) => { 
 
+    cupom.nome = req.body.nome
+    cupom.desconto = req.body.desconto
 
-
-
-// LOGINS:
-
-
-//http://localhost:8088/admin/login
-router.get('/login',(req,res) => {
-  res.render('login/login')
-})
-//http://localhost:8088/admin/cliente
-router.get('/cliente',(req,res) => {
-  res.render('login/cliente')
-})
-//http://localhost:8088/admin/administrador
-router.get('/administrador',(req,res) => {
-  res.render('login/administrador')
-})
-
-
-
-
-router.get('/postagens', (req, res) => {
-  Postagem.find().lean().populate({path:'categorias', strictPopulate:false}).sort({data:"desc"}).then((postagens) => { 
-    res.render('admin/postagens', {postagens: postagens})
-  }).catch((err) => { 
-    req.flash('error_msg', 'Houve um error ao listar as postagens')
-    res.redirect('/admin')
-  })
-  
-})
-
-router.get('/postagens/add', (req, res) => { 
-  Categoria.find().lean().then((categorias) => {
-    res.render('admin/addpostagem', {categorias: categorias})
-  }).catch((err) => { 
-    req.flash("error_msg", "Houve um erro ao carregar o formulario")
-    res.redirect("/admin")
-  })
-})
-
-router.post("/postagens/nova", (req, res) => { 
-  var erros = []
-
-  if (req.body.categoria == "0") { 
-    erros.push({texto: "Categoria invalida, registre uma categoria"})
-  }
-  if (erros.length > 0) { 
-    res.render('admin/addpostagem', {erros: erros})
-  } else {
-    const novaPostagem = {
-      titulo: req.body.titulo,
-      descricao: req.body.descricao,
-      conteudo: req.body.conteudo,
-      categoria: req.body.categoria,
-      slug: req.body.slug
-    }
-    new Postagem(novaPostagem).save().then(() => { 
-      req.flash("success_msg", "Postagem criada com sucesso!")
-      res.redirect("/admin/postagens")
+    cupom.save().then(() => { 
+      req.flash('success_msg', 'Cupom editado com sucesso!')
+      res.redirect('/admin/cupons')
     }).catch((err) => { 
-      req.flash("error_msg","Houve um erro durante o salvamento da postagem")
-      res.redirect("/admin/postagens")
+      req.flash('error_msg', 'Houve um erro interno ao salvar a edicao do cupom')
+      res.redirect('/admin/cupons')
     })
-  }
 
-})
-
-router.get('/postagens/edit/:id', (req, res) => { 
-
-  Postagem.findOne({ _id: req.params.id}).then((postagem) => { 
-    Categoria.find().then((categorias) => { 
-      res.render('admin/editpostagens', {categorias: categorias, postagem: postagem})
-    }).catch((err) => { 
-      req.flash("error_msg","Houve um erro ao listar as categorias")
-      res.redirect("/admin/postagens")
-    })
   }).catch((err) => { 
-    req.flash("error_msg", "Houve um erro ao carregar um formulario de edicao")
-    res.redirect("/admin/postagens")
-  })
-
-})
-
-
-router.get("/postagens/deletar/:id", (req, res) => {
-  Postagem.remove({ _id: req.params.id }).then(() => { 
-    req.flash("success_msg", "Postagem deletada com sucesso!")
-    res.redirect("/admin/postagens")
-  }).catch((err) => { 
-    req.flash("error_msg", "Houve um erro interno")
-    res.redirect("/admin/postagens")
+    req.flash('error_msg', 'Houve um erro ao editar o cupom')
+    res.redirect('/admin/cupons')
   })
 })
+
+
+
+
+
+
+
+
+
+
+
 module.exports = router
 

@@ -21,6 +21,10 @@
 </head>
 <body>
     {{>_header}}
+    {{#if error}}
+    <div class="alert alert-danger">{{error}}</div>
+    {{else}}
+    {{/if}}
     {{>_msg}}
     <div class="container mt-4">{{{body}}}</div>
     {{>_footer}}

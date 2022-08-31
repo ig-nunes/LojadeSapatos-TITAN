@@ -9,24 +9,27 @@ const app = express()
 const mongoose = require("mongoose")
 const flash = require('connect-flash')
 const usuarios = require("./routes/usuario")
-// acrescentando models
-// require("./models/Postagem")
-// const Postagem = mongoose.model("postagens")
+const passport = require("passport")
+require("./config/auth")(passport)
 
 //Configuracoes
 
 // Sessao *app.use serve para criacao e configuracao de middleware*
-app.use(session({
-  secret: 'cursodenode',
-  resave: true,
-  saveUninitialized: true
-}))
-app.use(flash())
+      app.use(session({
+        secret: 'TITAN',
+        resave: true,
+        saveUninitialized: true
+      }))
+      app.use(flash())
+      app.use(passport.session())
+      app.use(flash())
 //Middleware  
 app.use((req, res, next) => {
-  res.locals.success_msg = req.flash("sucess_msg") //*criando variaveis globais atraves do locals para serem acessadas em qualquer pasta*
-  res.locals.error_msg = req.flash("error_msg")
-  next()
+      res.locals.success_msg = req.flash("sucess_msg") //*criando variaveis globais atraves do locals para serem acessadas em qualquer pasta*
+      res.locals.error_msg = req.flash("error_msg")
+      res.locals.error = req.flash("error")
+      res.locals.user = req.user || null
+      next()
 })
 //Body Parser
 app.use(bodyParser.urlencoded({ extended: true }))
