@@ -8,10 +8,13 @@
             <div class="card-body">
                 <h4>Nome: {{ nome }}</h4>
                 <h4>preco: {{ preco }}</h4>
-                <h4>Quantidade em Estoque: {{ quantEstoque }}</h4>
+                <a href="http://localhost:8088/admin/produtos/buscar/{{_id}}" class="btn btn-success">Ver detalhes do produto</a>
+                <br>
+                {{!-- <h4>Quantidade em Estoque: {{ quantEstoque }}</h4>
                 <h4>Categoria: {{ categoria }}</h4>
-                <h4>Marca: {{ marca }}</h4>
+                <h4>Marca: {{ marca }}</h4> --}}
                 <a href="/admin/produtos/edit/{{_id}}"><button class="btn btn-success">Editar produto</button></a>
+                <br>
                 <form action="/admin/produtos/deletar" method="POST">
                     <input type="hidden" name="id" value="{{_id}}">
                     <button type="submit" class="btn btn-danger">Deletar produto</button>
@@ -21,3 +24,7 @@
 {{else}}
     <h4>Nenhum produto registrado</h4>
 {{/each}}
+
+<a href="http://localhost:8088/admin/carrinho"><button class="btn btn-info m-4">Ir para o carrinho</button></a>
+<a href="http://localhost:8088/admin/favoritos"><button class="btn btn-info m-4">Ir para os favoritos</button></a>
+<a href="http://localhost:8088/admin/cupons"><button class="btn btn-info m-4">Ver todos os cupons</button></a>

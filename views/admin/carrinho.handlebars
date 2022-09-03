@@ -1,0 +1,39 @@
+
+<h2>Carrinho:</h2>
+<hr>
+{{#with cart}}
+<p>Quantos produtos: {{ totalItems }}</p>
+<p>Preço total: {{ totalPrice }}</p>
+
+{{/with}}
+{{#each produtos}}
+<div class="card">
+    <div class="card-body">
+        <h4>Nome: {{ item.nome }}</h4>
+        <h4>preco: {{ item.preco }}</h4>
+        <h4>Categoria: {{ item.categoria }}</h4>
+        <h4>Marca: {{ item.marca }}</h4>
+        <h4>Quantidade no carrinho: {{ quantity }}</h4>
+
+        <form action="/admin/carrinho/remover/{{ item._id }}" method="POST">
+            <input type="hidden" name="id" value="{{ item._id }}">
+            <button type="submit" class="btn btn-danger">Excluir produto</button>
+        </form>
+    </div>
+</div>
+{{else}}
+<h4>Nenhum produto registrado no carrinho</h4>
+{{/each}}
+
+<form action="/admin/carrinho" method="get">
+    <label for="cupom">Cupom de desconto</label>
+    <input type="text" name="cupom" id="cupom" placeholder="insira seu cupom de desconto">
+    <button type="submit">inserir cupom de desconto</button>
+</form>
+
+<form action="/admin/carrinho/finalizar-compra" method="post">
+    <input type="hidden" name="array" value="{{ array }}">
+    <button type="submit" class="btn btn-sucess">Finalizar compra</button>
+</form>
+
+<a href="http://localhost:8088/admin/produtos"><button class="btn btn-info m-4">voltar para produtos</button></a>
