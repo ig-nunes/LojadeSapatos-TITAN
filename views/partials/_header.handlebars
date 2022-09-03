@@ -29,9 +29,9 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbar-links">
               <div class="navbar-nav">
                 <a class="ml-3 text-dark text-decoration-none" href="/" id="home-menu">Home</a>
-                <a class="ml-3 text-dark text-decoration-none" href="./carrinho.html" id="cart-menu"></i> Carrinho</a>
-                <a class="ml-3 text-dark text-decoration-none" href="./favoritos.html" id="favorites-menu">Favoritos</a>
-                <a class="ml-3 text-dark text-decoration-none" href="./about.html" id="about-menu"> Sobre nós</a>
+                <a class="ml-3 text-dark text-decoration-none" href="/admin/carrinho" id="cart-menu"></i> Carrinho</a>
+                <a class="ml-3 text-dark text-decoration-none" href="/admin/favoritos" id="favorites-menu">Favoritos</a>
+                <a class="ml-3 text-dark text-decoration-none" href="#" id="about-menu"> Sobre nos</a>
                 {{#if user.eAdmin}} {{!-- aparecendo apenas para usuario logado que seja admin --}}
                 <a class="ml-3 text-dark text-decoration-none" href="/admin/cupons" id="products-menu"> Cadastrar Cupons</a>          
                 {{else}}
@@ -39,7 +39,7 @@
                 {{#if user.eAdmin}} {{!-- aparecendo apenas para usuario logado que seja admin --}}
                 <a class="ml-3 text-dark text-decoration-none" href="/admin/produtos" id="products-menu"> Cadastrar Produtos</a>          
                 {{else}}
-                <a class="ml-3 text-dark text-decoration-none" href="./produtos.html" id="products-menu"> Produtos</a>
+                <a class="ml-3 text-dark text-decoration-none" href="/admin/produtos" id="products-menu"> Produtos</a>
                 {{/if}}
                 {{#if user}} {{!-- aparecendo apenas para usuario logado --}}
                 <a class="ml-3 text-dark text-decoration-none" href="/usuarios/logout" id="about-menu"> Sair</a>
