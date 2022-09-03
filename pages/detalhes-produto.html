@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
     <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/detalhes-produto.css">
     <link rel="icon" type="image/svg" sizes="16x16" href="../img/logo14.svg">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +18,7 @@
 <body id="body">
     <header>
     
-        <nav class="navbar navbar-expand-lg fixed-top d-flex" id="heeader">
+        <nav class="navbar navbar-expand-lg d-flex" id="heeader">
             <!-- logo -->
             <a href="#" class=" ml-5">
             <img class="" id="logo" src="../img/logo.png" alt="logo">
@@ -43,14 +45,18 @@
             
             <!--navegacao -->
             <div class="collapse navbar-collapse justify-content-center" id="navbar-links">
-                <div class="navbar-nav">
+                <div class="navbar-nav" id="navbarr">
                   <a class="ml-3 text-dark text-decoration-none" href="./index.html" id="home-menu">Home</a>
                   <a class="ml-3 text-dark text-decoration-none" href="./produtos.html" id="products-menu"> Produtos</a>
                   <a class="ml-3 text-dark text-decoration-none" href="./carrinho.html" id="cart-menu"></i> Carrinho</a>
                   <a class="ml-3 text-dark text-decoration-none" href="./favoritos.html" id="favorites-menu">Favoritos</a>
                   <a class="ml-3 text-dark text-decoration-none" href="./about.html" id="about-menu"> Sobre nós</a>
-                  <a class="ml-3 text-dark text-decoration-none" href="./login.html" id="login-menu"><i
-                      class="bi bi-person-fill"></i> Login</a>
+                 <button id="butoon">
+                 <a class="ml-3 text-dark text-decoration-none" 
+                 href="./login.html" 
+                 id="login-menu">
+                 <i class="bi bi-person-fill"></i></a>
+                  </button> 
                 </div>
               </div>
          <!--end navegacao -->
@@ -58,168 +64,114 @@
     </header>
 
 
-    <section class="detalhes">
-        <div class="container">
-            <div class="row detalhes-titulo">
-                <h1>*Nome do produto*</h1>
-            </div>
-            <div class="row detalhes-produto">
-    
-                <div class="detalhes-esquerda">
-                    <div class="detalhes-imagem">
-                        <img src="../img/Adidas.svg" alt="Produto em específico">
-                    </div>
-    
-                    <div class="detalhes-botoes">
-                        <button class="btn-add-carrinho" type="submit">Adicionar ao Carrinho</button>
-                    </div>
-                </div>
-
-                <div class="detalhes-direita">
-                    <div class="detalhes-tabela">
-                        <table id="tabela-produto">
-                            <caption id="tabela-titulo">Descrição do Produto</caption>
-                            <tbody>
-                                <tr class="descricao-produto impar">
-                                    <td class="classe">
-                                        Nome:
-                                    </td>
-                                    <td>
-                                        Nome
-                                    </td>
-                                </tr>
-                                <tr class="descricao-produto par">
-                                    <td class="classe">
-                                        Marca:
-                                    </td>
-                                    <td>
-                                        Marca
-                                    </td>
-                                </tr>
-                                <tr class="descricao-produto impar">
-                                    <td class="classe">
-                                        Cor:
-                                    </td>
-                                    <td>
-                                        Cor
-                                    </td>
-                                </tr>
-                                <tr class="descricao-produto par">
-                                    <td class="classe">
-                                        Tamanho:
-                                    </td>
-                                    <td>
-                                        Tamanho
-                                    </td>
-                                </tr>
-                                <tr class="descricao-produto impar">
-                                    <td class="classe">
-                                        Quantidade Em Estoque:
-                                    </td>
-                                    <td>
-                                        Quantidade Em Estoque
-                                    </td>
-                                </tr>
-                                <tr class="descricao-produto par">
-                                    <td class="classe">
-                                        Garantia:
-                                    </td>
-                                    <td>
-                                        Garantia
-                                    </td>
-                                </tr>
-                                <tr class="descricao-produto impar">
-                                    <td class="classe">
-                                        Preço:
-                                    </td>
-                                    <td>
-                                        Preço
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-    
-            </div>
-
-            <div class="relacionados">
-                <div class="row relacionados-titulo">
-                    <h2>Itens Relacionados</h2>
-                </div>
-
-                <div class="row fileira-produtos">
-                    <div class="card-produtos">
-                        <div class="card">
-                            <a href="detalhes-produto.html">
-                                <img src="../img/Nike.svg" alt="Produto">
-                                <p class="nome">Lorem ipsum dolor sit amet</p>
-                                <p class="produto-preco">DE:   <s>R$300,00</s> </p>
-                                <p class="produto-preco">POR:   <strong>R$250,00</strong> </p>
-                                <p class="produto-parcela">ou 10x de R$25,00</p>
-                            </a>
-    
-                        </div>
-                        <button class="btn-adicionar-carrinho">
-                            Adicionar ao Carrinho
-                        </button>
-
-                    </div>
-                    <div class="card-produtos">
-                        <div class="card">
-                            <a href="detalhes-produto.html">
-                                <img src="../img/Nike.svg" alt="Produto">
-                                <p class="nome">Lorem ipsum dolor sit amet</p>
-                                <p class="produto-preco">DE:   <s>R$300,00</s> </p>
-                                <p class="produto-preco">POR:   <strong>R$250,00</strong> </p>
-                                <p class="produto-parcela">ou 10x de R$25,00</p>
-                            </a>
-    
-                        </div>
-                        <button class="btn-adicionar-carrinho">
-                            Adicionar ao Carrinho
-                        </button>
-
-                    </div>
-                    <div class="card-produtos">
-                        <div class="card">
-                            <a href="detalhes-produto.html">
-                                <img src="../img/Nike.svg" alt="Produto">
-                                <p class="nome">Lorem ipsum dolor sit amet</p>
-                                <p class="produto-preco">DE:   <s>R$300,00</s> </p>
-                                <p class="produto-preco">POR:   <strong>R$250,00</strong> </p>
-                                <p class="produto-parcela">ou 10x de R$25,00</p>
-                            </a>
-    
-                        </div>
-                        <button class="btn-adicionar-carrinho">
-                            Adicionar ao Carrinho
-                        </button>
-
-                    </div>
-                    <div class="card-produtos">
-                        <div class="card">
-                            <a href="detalhes-produto.html">
-                                <img src="../img/Nike.svg" alt="Produto">
-                                <p class="nome">Lorem ipsum dolor sit amet</p>
-                                <p class="produto-preco">DE:   <s>R$300,00</s> </p>
-                                <p class="produto-preco">POR:   <strong>R$250,00</strong> </p>
-                                <p class="produto-parcela">ou 10x de R$25,00</p>
-                            </a>
-    
-                        </div>
-                        <button class="btn-adicionar-carrinho">
-                            Adicionar ao Carrinho
-                        </button>
-
-                    </div>
-                </div>
-
-            </div>
+    <section id="detalhes" class="section-p1">
+        <div class="image-produto">
+            <img src="../img/Adidas1.webp" width="100%" id="Img" alt=Produto em específico">
         </div>
 
-    </section>
-    
+        <div class="detalhes-descricao">
+            <h4>Nome do Produto</h4>
+            <strong><h2>R$ Valor </h2> </strong>
+            <select>
+                <option>Select Size</option>
+                <option>P</option>
+                <option>M</option>
+                <option>G</option>
+                <option>GG</option>
+            </select>
+            <div class="cor">
+                <button style="background: red" id="botao-cor"></button>
+                <button style="background: black"  id="botao-cor"></button>
+                <button style="background: white" id="botao-cor"></button>
+                <button style="background: gray" id="botao-cor"></button>
+            </div>
+            <h4>Descrição do produto</h4>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.  Ullam, minus similique?</p>
+            <div class="bloco">
+            <input type="number" value="1">
+            <button id="carrinho">Adicionar ao carrinho</button>
+            <button class="fa fa-heart heart" id="heart"></button>
+        </div>
+            <p style="color: red;"> (Quantidade disponivel X) </p>
+        </div>
+        
+</section>
+
+<section id="product1" class="section-p1">
+    <h2>Itens relacionados</h2>
+    <p>Conforto e qualidade você encontra aqui!</p>
+    <div class="pro-container">
+        <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
+            <img src="../img/Adidas1.webp" alt="Produto">
+            <div class="descricao">
+                <span>esportivo</span>
+                <h5> Adizero Boston 11 </h5>
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h4>R$1.399,99</h4>
+            </div>
+            <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
+            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
+        </div>
+        <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
+            <img src="../img/Adidas2.webp" alt="Produto">
+            <div class="descricao">
+                <span>esportivo</span>
+                <h5>Adizero RC 4</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h4>R$499,99</h4>
+            </div>
+            <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
+            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
+        </div>
+        <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
+            <img src="../img/Adidas3.webp" alt="Produto">
+            <div class="descricao">
+                <span>esportivo</span>
+                <h5>Supernova+</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h4>R$499,99 </h4>
+            </div>
+            <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
+            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
+        </div>
+        <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
+            <img src="../img/Adidas4.webp" alt="Produto">
+            <div class="descricao">
+                <span>esportivo</span>
+                <h5>Dropset Trainer</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h4>R$799,99</h4>
+            </div>
+            <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
+            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
+        </div>
+
+
+</section>
 
 
 
@@ -228,12 +180,11 @@
  <footer class="d-flex container-fluid" id="foooter">
     <img src="../img/logo.png" style="height: 100px;" alt="logo">
     <ul class="footer-list">
-      <li>Home</li>
-      <li>Produtos</li>
-      <li>Carrinho</li>
-      <li>Favoritos</li>
-      <li>Login</li>
-      <li>Sobre nós</li>
+      <a class="ml-3 text-dark text-decoration-none" href="./index.html">Home</a>
+      <a class="ml-3 text-dark text-decoration-none" href="./produtos.html"> Produtos</a>
+      <a class="ml-3 text-dark text-decoration-none" href="./carrinho.html"> Carrinho</a>
+      <a class="ml-3 text-dark text-decoration-none" href="./favoritos.html">Favoritos</a>
+      <a class="ml-3 text-dark text-decoration-none" href="./about.html"> Sobre nós</a>
     </ul>
     
   </footer>
