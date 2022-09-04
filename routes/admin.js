@@ -436,18 +436,5 @@ router.post('/favoritos/remover/:id', (req, res) => {
 
 
 
-
-
-
-module.exports = router
-
-
-
-
-
-
-
-
-
 module.exports = router
 
