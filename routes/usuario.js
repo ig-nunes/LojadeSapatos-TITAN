@@ -77,7 +77,7 @@ router.post("/registro", (req, res) => {
 
 
 router.get("/login", (req, res) => { 
-    res.render("login/login")
+    res.render("usuarios/login")
 })
 
 
@@ -96,6 +96,15 @@ router.get("/logout", (req, res, next) => {
         req.flash("success_msg", "Deslogado com sucesso!")
         res.redirect("/")
     })
+})
+
+
+router.get("/cupons", (req, res) => { 
+    res.render("login/login")
+})
+
+router.get("/recuperar",(req,res) => {
+    res.render("usuarios/recuperarsenha")
 })
 
 module.exports = router

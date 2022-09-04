@@ -1,194 +1,77 @@
 /* ------------- DETALHES ------------- */
 
-
-.detalhes {
+#detalhes {
     display: flex;
-    justify-content: center;
+    margin-top: 20px;
 }
 
-.detalhes-titulo {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
+#detalhes .image-produto{
     width: 40%;
-    height: 80px;
-
-    border: solid black 1px;
-    background-color: #FFFFFF;
+    margin-right: 50px;
 }
-
-.detalhes-titulo h1 {
-    font-size: 1.5em;
-    padding-left: 15px;
-}
-
-.detalhes-produto{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 50px;
-}
-
-
-/* Detalhes Esquerda  */
-
-
-.detalhes-esquerda {
+#detalhes .detalhes-descricao{
     width: 50%;
+    padding-top: 30px;
 }
-
-
-.detalhes-imagem {
-    width: 90%;
-
-    border: solid black 1px;
-    background-color: #FFFFFF;
-
-    margin-bottom: 30px;
+#detalhes .detalhes-descricao h4{
+ padding: 0px 0 8px 0px;
 }
-
-.detalhes-imagem img {
-    width: 100%;
-    height: auto;
+#detalhes .detalhes-descricao h2{
+    font-size: 26px;
 }
-
-.btn-add-carrinho {
-    width: 90%;
-    height: 70px;
-
-    border: solid black 1px;
-    background-color: #FFFFFF;
-
-    transition: 0.5;
+#detalhes .detalhes-descricao select{
+    display: block;
+    padding: 5px 10px;
+    margin-bottom: 10px;
 }
-
-.btn-add-carrinho:hover {
-    background-color: #e9f0f2;
+#detalhes .detalhes-descricao input{
+    width: 50px;
+    height: 47px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right:10px ;
 }
-
-
-/* Detalhes Direita */
-
-
-.detalhes-direita {
-    width: 50%;
-
-}
-
-.detalhes-tabela {
-    border: solid black 1px;
-    background-color: #FFFFFF;
-}
-
-#tabela-produto {
-    width: 100%;
-}
-
-#tabela-titulo {
-    caption-side: top;
-    text-align: left;
-    padding: 15px;
-    background-color: #e9f0f2;  /* #A5D4FF */
-    color: #000000;
-}
-
-td {
-    padding: 15px;
-}
-
-.descricao-produto {
-    height: 2em;
-    background-color: #FFFFFF;
-}
-
-.classe {
-    width: 40%;
-}
-
-.par {
-    background-color: #e9f0f2;
-}
-
-
-/* ------------- ITENS RELACIONADOS ------------- */
-
-.relacionados {
-    margin-top: 50px;
-}
-
-.relacionados-titulo {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
-    width: 40%;
-    height: 80px;
-
-    border: solid black 1px;
-    background-color: #FFFFFF;
-
-    margin-bottom: 50px;
-}
-
-.relacionados-titulo h2 {
-    font-size: 1.5em;
-    padding-left: 15px;
-}
-
-.fileira-produtos {
-    display: flex;
-    justify-content: space-between;
-}
-
-.card-produtos {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    width: 20%;
-}
-
-.card {
-    height: 300px;
-    border: solid black 1px;
-    background-color: #FFFFFF;
-    margin-bottom: 30px;
-}
-
-.card-produtos .card a {
-    text-decoration: none;
-    text-align: center;
-    justify-content: center;
-    height: 100%;
-
-    color: #000000;
-}
-
-.card-produtos a img {
-    width: 100%;
-    height: auto;
-}
-
-.produto-preco {
-    text-shadow: 1.5px 1.5px 4px rgb(98, 98, 98);
-}
-
-.produto-parcela {
-    color: #838383;
-}
-
-.btn-adicionar-carrinho {
-    width: 100%;
+#detalhes .detalhes-descricao #botao-cor{
+    border: none;
+    width: 50px;
     height: 50px;
+    border-radius: 50px;
 
-    border: solid black 1px;
-    background-color: #FFFFFF;
-
-    transition: 0.5s;
+}
+#detalhes .detalhes-descricao #carrinho{
+    width: 150px;
+    height: 50px;
+    background-color: #088178;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    
 }
 
-.btn-adicionar-carrinho:hover {
-    background-color: #e9f0f2;
+#detalhes .detalhes-descricao input{
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 5px;
 }
 
+#detalhes .detalhes-descricao .bloco{
+    display: flex;
+    
+}
+#detalhes .detalhes-descricao p{
+  margin-top: 10px;    
+}
+
+
+#detalhes .bloco .heart{
+    width: 50px;
+    height: 50px;
+    line-height: 40px;
+    border-radius: 50px;
+    background-color: #fde3cd;
+    font-weight: 500;
+    color: red;
+    border: 1px solid #cce7d0;
+    margin-left: 10px;
+}

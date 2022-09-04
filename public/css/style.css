@@ -5,14 +5,16 @@
 
 /* ------------- BANNER ------------- */
 
-.banner, .produtos {
+.banner,
+.produtos {
     display: flex;
     justify-content: center;
 
     /* background-color: #D5E2F2; */
 }
 
-.carousel-control-prev, .carousel-control-next {
+.carousel-control-prev,
+.carousel-control-next {
     display: none;
 }
 
@@ -22,13 +24,13 @@
 }
 
 .indicators {
-    width: 120px;
+    width: 200px;
     height: 15px;
 
     border: none;
     border-radius: 30px;
     background-color: #A5D4FF;
-    
+
     margin-left: 40px;
     margin-right: 40px;
 }
@@ -49,93 +51,136 @@
 
 
 /* ------------- PROPAGANDA ------------- */
-
-.substituto {
-    /* width: 100vw; */
-    height: 200px;
-
-    background-color: #E9F0F2;
+.propaganda {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 40vh;
+    background-image: url("../img/propaganda.png");
+    background-position: center;
 }
 
+.propaganda h4 {
+    color: #ffffff;
+    font-size: 20px;
+}
 
+.propaganda h2 {
+    color: #ffffff;
+    font-size: 30px;
+    padding: 10px 0;
+}
+
+.propaganda h2 span {
+    color: rgb(255, 15, 15);
+}
+
+#buttoon {
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 15px 30px;
+    color: #000000;
+}
 
 /* ------------- PRODUTOS ------------- */
 
 
-.produtos-titulo {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
-    width: 50%;
-    height: 80px;
-
-    border: solid black 1px;
-    background-color: #FFFFFF;
+.section-p1 {
+    padding: 100px 150px;
 }
 
-.produtos-titulo h1 {
-    font-size: 1.5em;
-    /* font-family: 'Poppins', sans-serif; */
-
-    padding-left: 10%;
-}
-
-.categoria {
-    margin:40px 0 40px 0;
-}
-
-.categoria-titulo {
-    height: 50px;
-    align-items: center;
-
-    border: solid black 1px;
-    background-color: #FFFFFF;
-    
-    margin-bottom: 20px;
-}
-
-.categoria-titulo h2 {
-    font-size: 1em;
-    font-weight: bold;
-
-    padding-left: 1em;
-}
-
-.fileira-produtos{
-    display: flex;
-    justify-content: space-between;
-}
-
-.card-produtos {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    width: 20%;
-    height: 300px;
-
-    border: solid black 1px;
-    background-color: #FFFFFF;
-}
-
-.card-produtos a {
-    text-decoration: none;
+#product1 {
     text-align: center;
-    justify-content: center;
+}
 
+#product1 .pro-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+
+#product1 .pro {
+    width: 22%;
+    padding: 250px;
+    padding: 10px 12px;
+    border: 1px solid #E9F0F2;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+    margin: 15px 0;
+    background-color: white;
+    position: relative;
+
+}
+
+#product1 .pro .descricao {
+    text-align: start;
+    padding: 10px 0;
+}
+
+#product1 .pro .descricao span {
+    color: #606063;
+    font-size: 12px;
+}
+
+#prouct1 .pro .descricao h5 {
+    padding-top: 7px;
     color: #000000;
+    font-size: 14px;
 }
 
-.card-produtos a img {
+#product1 .pro img {
     width: 100%;
-    height: auto;
+    border-radius: 20px;
 }
 
-.produto-preco {
-    text-shadow: 1.5px 1.5px 4px rgb(98, 98, 98);
+#product1 .pro .descricao i {
+    font-size: 12px;
+    color: yellow;
 }
 
-.produto-parcela {
-    color: #838383;
+#product1 .pro .descricao h4 {
+    padding-top: 7px;
+    font-size: 15px;
+    font-weight: 700;
+    color: green;
+}
+
+#product1 .pro .cart {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50px;
+    background-color: #e8f6ea;
+    font-weight: 500;
+    color: #088178;
+    border: 1px solid #cce7d0;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+
+}
+
+#product1 .pro .heart {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50px;
+    background-color: #fde3cd;
+    font-weight: 500;
+    color: red;
+    border: 1px solid #cce7d0;
+    position: absolute;
+    bottom: 20px;
+    right: 70px;
+
 }

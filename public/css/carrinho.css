@@ -1,130 +1,134 @@
-
 /* ------------- Carrinho ------------- */
-
-.carrinho {
-    display: flex;
-    justify-content: center;
-}
-
-.carrinho-head {
-    justify-content: space-between;
-}
-
-.carrinho-titulo {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
-    width: 40%;
-    height: 80px;
-
-    border: solid black 1px;
-    background-color: #FFFFFF;
-}
-
-.carrinho-titulo h1 {
-    font-size: 1.5em;
-
-    padding-left: 10%;
-}
-
-.carrinho-preco {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    width: 20%;
-    height: 80px;
-    
-    border: solid black 1px;
-    background-color: #FFFFFF;
-}
-
-.carrinho-preco p {
-    font-size: 1em;
-    font-weight: bold;
-
-    margin: 0;
-    padding: 0;
-}
-
-.categoria {
-    margin:40px 0 40px 0;
-}
-
-.categoria-titulo {
-    height: 50px;
-    align-items: center;
-
-    border: solid black 1px;
-    background-color: #FFFFFF;
-    
-    margin-bottom: 20px;
-}
-
-.categoria-titulo h2 {
-    font-size: 1.2em;
-    padding-left: 1em;
-}
-
-.fileira-produtos {
-    display: flex;
-    justify-content: space-between;
-}
-
-.card-produtos {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    width: 20%;
-    height: 300px;
-
-    border: solid black 1px;
-    background-color: #FFFFFF;
-}
-
-.card-produtos a {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-decoration: none;
+h2 {
     text-align: center;
-    
-    height: 100%;
-
-    color: #000000;
+    margin-top: 10px;
+    padding-top: 20px;
 }
 
-.card-produtos a img {
-    width: 100%;
-    height: auto;
+#cart {
+    display: flex;
+    justify-content: center;
 }
 
-.produto-preco {
-    text-shadow: 1.5px 1.5px 4px rgb(98, 98, 98);
+#cart table {
+    width: 90%;
+    margin: 50px;
+    margin-left: 50px;
+    border-collapse: collapse;
+    white-space: nowrap;
 }
 
-.produto-parcela {
-    color: #838383;
+#cart table img {
+    width: 70px;
 }
 
-.carrinho-footer {
+#cart table td :nth-child(1) {
+    width: 100px;
+    text-align: center;
+}
+
+#cart table td :nth-child(2) {
+    width: 150px;
+    text-align: center;
+}
+
+#cart table td :nth-child(3) {
+    width: 250px;
+    text-align: center;
+}
+
+#cart table td :nth-child(4),
+#cart table td :nth-child(5),
+#cart table td :nth-child(6) {
+    width: 100px;
+    text-align: center;
+}
+
+#cart table td :nth-child(5) input {
+    width: 70px;
+    padding: 10px 5px 10px 15px;
+}
+
+#cart table input {
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+#cart table thead {
+    border: 1px solid black;
+    border-left: none;
+    border-right: none;
+    margin: 10px;
+}
+
+#cart table thead td {
+    font-weight: 700;
+    font-size: 15px;
+    padding: 18px 0;
+
+}
+
+#cart table tbody tr td {
+    padding-top: 15px;
+}
+
+#cart table tbody td {
+    font-size: 12px;
+}
+
+#cupom {
+    margin: 10px;
+    margin-left: 50px;
+}
+
+#cupom h3 {
+    font-size: 20px;
+}
+
+#cupom input {
+    width: 300px;
+    padding: 8px;
+    outline: none;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px
+}
+
+#cart-cupom {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
-/* .carrinho-finalizar {
-    width: 45%;
-    height: 100%;
-} */
-
-.btn-finalizar {
-    font-weight: bold;
-
-    width: 45%;
-    height: 80px;
-
-    border: solid black 1px;
-    border-radius: 10px;
-    background-color: #FFFFFF;
+#botaofinal {
+    width: 100px;
+    height: 40px;
+    background-color: #088178;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
 }
+
+#finalizar-compra {
+    width: 40%;
+    background-color: #e9f0f2;
+    border-radius: 5px;
+    border: 1px solid #e2e9e1;
+    padding: 30px;
+    margin: 20px;
+    margin-top: 10px;
+
+}
+
+#finalizar-compra table {
+    border-collapse: collapse;
+    border-radius: 5px;
+    width: 100%;
+
+}
+
+#finalizar-compra table td {
+    width: 50%;
+    border: 1px solid #e2e9e1;
+    padding: 10px;
+    font-size: 13px;

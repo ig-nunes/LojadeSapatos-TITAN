@@ -26,7 +26,7 @@ router.get('/',eAdmin,(req,res) => {
 //   CUPONS:
 
 // http://localhost:8088/admin/cupons
-router.get('/cupons', (req, res) => {
+router.get('/cupons',eAdmin, (req, res) => {
   Cupom.find({}).then((cupons) => {
     res.render('admin/cupons', { cupons })
   })
@@ -37,7 +37,7 @@ router.get('/cupons', (req, res) => {
 })
 
 //http://localhost:8088/admin/cupons/buscar/:id
-router.get('/cupons/buscar/:id', (req, res) => {
+router.get('/cupons/buscar/:id',eAdmin, (req, res) => {
   const { id } = req.params
   Cupom.findById(id).then((cupom) => {
     if (cupom === null) {
@@ -55,12 +55,12 @@ router.get('/cupons/buscar/:id', (req, res) => {
 
 
 // http://localhost:8088/admin/cupons/add
-router.get('/cupons/add', (req, res) => {
+router.get('/cupons/add',eAdmin, (req, res) => {
   res.render('admin/addcupom')
 })
 
 //http://localhost:8088/admin/cupons/novo
-router.post('/cupons/novo', (req, res) => {
+router.post('/cupons/novo',eAdmin, (req, res) => {
   var erros = [] // validacao para evitar erros do usuario
 
   if (!req.body.nome || typeof req.body.nome == undefined || req.body.nome == null) {
@@ -100,7 +100,7 @@ router.post('/cupons/novo', (req, res) => {
 })
 
 //http://localhost:8088/admin/cupons/edit/:id
-router.get('/cupons/edit/:id', (req, res) => {
+router.get('/cupons/edit/:id',eAdmin, (req, res) => {
   const { id } = req.params
   Cupom.findById(id).then((cupom) => {
     res.render('admin/editcupons', { cupom: cupom })
@@ -111,7 +111,7 @@ router.get('/cupons/edit/:id', (req, res) => {
 })
 
 //http://localhost:8088/admin/cupons/edit
-router.post('/cupons/edit', (req, res) => {
+router.post('/cupons/edit',eAdmin, (req, res) => {
   Cupom.findOne({ _id: req.body.id }).then((cupom) => {
 
     cupom.nome = req.body.nome
@@ -132,7 +132,7 @@ router.post('/cupons/edit', (req, res) => {
 })
 
 //http://localhost:8088/admin/cupons/deletar
-router.post("/cupons/deletar", (req, res) => {
+router.post("/cupons/deletar",eAdmin, (req, res) => {
   Cupom.findByIdAndDelete({ _id: req.body.id }).then(() => {
     req.flash('sucess_msg', 'Cupom deletado com sucesso!')
     res.redirect('/admin/cupons')
@@ -430,6 +430,16 @@ router.post('/favoritos/remover/:id', (req, res) => {
   req.session.favorito = favorito;
   res.redirect('http://localhost:8088/admin/favoritos');
 });
+
+
+
+
+
+
+
+
+
+module.exports = router
 
 
 

@@ -18,6 +18,7 @@ const Usuario = new Schema({
     eAdmin: {
         type: Number,
         default:1,
+        //0 = comprador 1 = admin
     },
 })
 
