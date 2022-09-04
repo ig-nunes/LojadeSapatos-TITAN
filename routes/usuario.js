@@ -107,20 +107,4 @@ router.get("/recuperar",(req,res) => {
     res.render("usuarios/recuperarsenha")
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 module.exports = router
