@@ -276,9 +276,9 @@ router.post('/carrinho/add-carrinho/:id', async (req, res, next) => {
   cart.add(produto, produto._id);
   req.session.cart = cart;
   req.session.cart.items[produtoId].price = produto.preco * req.session.cart.items[produtoId].quantity;
-  if (req.session.favorito.items[produtoId]){
-    delete req.session.favorito.items[produtoId]
-  }
+  // if (req.session.favorito.items[produtoId]){
+  //   delete req.session.favorito.items[produtoId]
+  // }
 
   res.redirect('http://localhost:8088/admin/produtos')
 });
