@@ -1,0 +1,15 @@
+
+{{#with cupom}}
+<div class="card">
+    <div class="card-body">
+        <h4>Nome: {{ nome }}</h4>
+        <h4>preco: {{ desconto }}</h4>
+        <a href="/admin/produtos/edit/{{_id}}"><button class="btn btn-success">Editar cupom</button></a>
+        <form action="/admin/produtos/deletar" method="POST">
+            <input type="hidden" name="id" value="{{_id}}">
+            <button type="submit" class="btn btn-danger">Deletar cupom</button>
+        </form>
+    </div>
+</div>
+
+{{/with}}

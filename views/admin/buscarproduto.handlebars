@@ -1,0 +1,28 @@
+<a href="http://localhost:8088/admin/produtos"><button class="btn btn-info m-4">voltar para produtos</button></a>
+<br>
+<a href="http://localhost:8088/admin/carrinho"><button class="btn btn-info m-4">Ir para o carrinho</button></a>
+<hr>
+
+{{#with produto}}
+<div class="card">
+    <div class="card-body">
+        <h4>Nome: {{ nome }}</h4>
+        <h4>preco: {{ preco }}</h4>
+        <h4>Quantidade em Estoque: {{ quantEstoque }}</h4>
+        <h4>Categoria: {{ categoria }}</h4>
+        <h4>Marca: {{ marca }}</h4>
+        <a href="/admin/produtos/edit/{{_id}}"><button class="btn btn-success">Editar produto</button></a>
+        <form action="/admin/produtos/deletar" method="POST">
+            <input type="hidden" name="id" value="{{_id}}">
+            <button type="submit" class="btn btn-danger">Deletar produto</button>
+        </form>
+        <form action="/admin/carrinho/add-carrinho/{{_id}}" method="post">
+            <button type="submit">Adicionar ao carrinho</button>
+        </form>
+        <form action="/admin/favoritos/add-favoritos/{{_id}}" method="post">
+            <button type="submit">Adicionar aos favoritos</button>
+        </form>
+    </div>
+</div>
+
+{{/with}}

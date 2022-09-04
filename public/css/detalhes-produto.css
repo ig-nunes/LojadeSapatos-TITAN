@@ -1,0 +1,77 @@
+/* ------------- DETALHES ------------- */
+
+#detalhes {
+    display: flex;
+    margin-top: 20px;
+}
+
+#detalhes .image-produto{
+    width: 40%;
+    margin-right: 50px;
+}
+#detalhes .detalhes-descricao{
+    width: 50%;
+    padding-top: 30px;
+}
+#detalhes .detalhes-descricao h4{
+ padding: 0px 0 8px 0px;
+}
+#detalhes .detalhes-descricao h2{
+    font-size: 26px;
+}
+#detalhes .detalhes-descricao select{
+    display: block;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+#detalhes .detalhes-descricao input{
+    width: 50px;
+    height: 47px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right:10px ;
+}
+#detalhes .detalhes-descricao #botao-cor{
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+
+}
+#detalhes .detalhes-descricao #carrinho{
+    width: 150px;
+    height: 50px;
+    background-color: #088178;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    
+}
+
+#detalhes .detalhes-descricao input{
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#detalhes .detalhes-descricao .bloco{
+    display: flex;
+    
+}
+#detalhes .detalhes-descricao p{
+  margin-top: 10px;    
+}
+
+
+#detalhes .bloco .heart{
+    width: 50px;
+    height: 50px;
+    line-height: 40px;
+    border-radius: 50px;
+    background-color: #fde3cd;
+    font-weight: 500;
+    color: red;
+    border: 1px solid #cce7d0;
+    margin-left: 10px;
+}

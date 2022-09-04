@@ -1,0 +1,136 @@
+/* ------------- Carrinho ------------- */
+h2 {
+    text-align: center;
+    margin-top: 10px;
+    padding-top: 20px;
+}
+
+#cart {
+    display: flex;
+    justify-content: center;
+}
+
+#cart table {
+    width: 90%;
+    margin: 50px;
+    margin-left: 50px;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+#cart table img {
+    width: 70px;
+}
+
+#cart table td :nth-child(1) {
+    width: 100px;
+    text-align: center;
+}
+
+#cart table td :nth-child(2) {
+    width: 150px;
+    text-align: center;
+}
+
+#cart table td :nth-child(3) {
+    width: 250px;
+    text-align: center;
+}
+
+#cart table td :nth-child(4),
+#cart table td :nth-child(5),
+#cart table td :nth-child(6) {
+    width: 100px;
+    text-align: center;
+}
+
+#cart table td :nth-child(5) input {
+    width: 70px;
+    padding: 10px 5px 10px 15px;
+}
+
+#cart table input {
+    width: 50px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+#cart table thead {
+    border: 1px solid black;
+    border-left: none;
+    border-right: none;
+    margin: 10px;
+}
+
+#cart table thead td {
+    font-weight: 700;
+    font-size: 15px;
+    padding: 18px 0;
+
+}
+
+#cart table tbody tr td {
+    padding-top: 15px;
+}
+
+#cart table tbody td {
+    font-size: 12px;
+}
+
+#cupom {
+    margin: 10px;
+    margin-left: 50px;
+}
+
+#cupom h3 {
+    font-size: 20px;
+}
+
+#cupom input {
+    width: 300px;
+    padding: 8px;
+    outline: none;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px
+}
+
+#cart-cupom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#botaofinal {
+    width: 100px;
+    height: 40px;
+    background-color: #088178;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+}
+
+#finalizar-compra {
+    width: 40%;
+    background-color: #e9f0f2;
+    border-radius: 5px;
+    border: 1px solid #e2e9e1;
+    padding: 30px;
+    margin: 20px;
+    margin-top: 10px;
+
+}
+
+#finalizar-compra table {
+    border-collapse: collapse;
+    border-radius: 5px;
+    width: 100%;
+
+}
+
+#finalizar-compra table td {
+    width: 50%;
+    border: 1px solid #e2e9e1;
+    padding: 10px;
+    font-size: 13px;
+
+}

@@ -1,0 +1,56 @@
+<header>
+    
+        <nav class="navbar navbar-expand-lg d-flex" id="heeader">
+            <!-- logo -->
+            {{!-- <a href="#" class=" ml-5">
+            <img class="" id="logo" src="../img/logo.png" alt="logo">
+            </a> --}}
+            <!-- end logo -->
+    
+    
+            <!-- barra de pesquisa -->
+            <div class="collapse navbar-collapse justify-content-end" id="barradepesquisa">
+                <form>
+                <input id="busca-nav" class="form-control" style="min-width:400px;"placeholder="O que você procura?" type="text">
+    
+                </form>
+            </div>
+                
+            <!-- end barra de pesquisa -->
+            
+            <!-- menu hamburguer -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
+            aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- end menu hamburguer -->
+            
+            <!--navegacao -->
+            <div class="collapse navbar-collapse justify-content-center" id="navbar-links">
+              <div class="navbar-nav">
+                <a class="ml-3 text-dark text-decoration-none" href="/" id="home-menu">Home</a>
+                <a class="ml-3 text-dark text-decoration-none" href="/admin/carrinho" id="cart-menu"></i> Carrinho</a>
+                <a class="ml-3 text-dark text-decoration-none" href="/admin/favoritos" id="favorites-menu">Favoritos</a>
+                <a class="ml-3 text-dark text-decoration-none" href="#" id="about-menu"> Sobre nos</a>
+                {{#if user.eAdmin}} {{!-- aparecendo apenas para usuario logado que seja admin --}}
+                <a class="ml-3 text-dark text-decoration-none" href="/admin/cupons" id="products-menu"> Cadastrar Cupons</a>          
+                {{else}}
+                {{/if}}
+                {{#if user.eAdmin}} {{!-- aparecendo apenas para usuario logado que seja admin --}}
+                <a class="ml-3 text-dark text-decoration-none" href="/admin/produtos" id="products-menu"> Cadastrar Produtos</a>          
+                {{else}}
+                <a class="ml-3 text-dark text-decoration-none" href="/admin/produtos" id="products-menu"> Produtos</a>
+                {{/if}}
+                {{#if user}} {{!-- aparecendo apenas para usuario logado --}}
+                <a class="ml-3 text-dark text-decoration-none" href="/usuarios/logout" id="about-menu"> Sair</a>
+                {{else}}
+                <a class="ml-3 text-dark text-decoration-none" href="/usuarios/login" id="login-menu"><iclass="bi bi-person-fill"></i> Login</a>
+                {{/if}}
+
+                 
+    
+              </div>
+            </div>
+         <!--end navegacao -->
+        </nav>
+    </header>

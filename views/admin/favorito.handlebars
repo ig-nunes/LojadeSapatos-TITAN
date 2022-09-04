@@ -1,0 +1,29 @@
+
+<h2>Favoritos:</h2>
+<hr>
+
+{{#each produtos}}
+<div class="card">
+    <div class="card-body">
+        <h4>Nome: {{ item.nome }}</h4>
+        <h4>preco: {{ item.preco }}</h4>
+        <h4>Categoria: {{ item.categoria }}</h4>
+        <h4>Marca: {{ item.marca }}</h4>
+        
+        <form action="/admin/favoritos/remover/{{ item._id }}" method="POST">
+            <input type="hidden" name="id" value="{{ item._id }}">
+            <button type="submit" class="btn btn-danger">Excluir produto</button>
+        </form>
+        <form action="/admin/carrinho/add-carrinho/{{ item._id }}" method="post">
+            <button type="submit">Adicionar ao carrinho</button>
+        </form>
+    </div>
+</div>
+{{else}}
+<h4>Nenhum produto registrado nos favoritos</h4>
+{{/each}}
+
+
+<a href="http://localhost:8088/admin/produtos"><button class="btn btn-info m-4">voltar para produtos</button></a>
+<a href="http://localhost:8088/admin/carrinho"><button class="btn btn-info m-4">ir para o carrinho</button></a>
+<a href="http://localhost:8088/admin/cupons"><button class="btn btn-info m-4">ir para os cupons</button></a>
