@@ -1,37 +1,128 @@
+<style>
+    
+#detalhes {
+    display: flex;
+    margin-top: 20px;
+}
+
+#detalhes .image-produto{
+    width: 40%;
+    margin-right: 50px;
+}
+#detalhes .detalhes-descricao{
+    width: 50%;
+    padding-top: 30px;
+}
+#detalhes .detalhes-descricao h4{
+ padding: 0px 0 8px 0px;
+}
+#detalhes .detalhes-descricao h2{
+    font-size: 26px;
+}
+#detalhes .detalhes-descricao select{
+    display: block;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+#detalhes .detalhes-descricao input{
+    width: 50px;
+    height: 47px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right:10px ;
+}
+#detalhes .detalhes-descricao #botao-cor{
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+
+}
+#detalhes .detalhes-descricao #carrinho{
+    width: 150px;
+    height: 50px;
+    background-color: #088178;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 5px;
+    
+}
+
+#detalhes .detalhes-descricao input{
+    width: 50px;
+    height: 50px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+#detalhes .detalhes-descricao .bloco{
+    display: flex;
+    
+}
+#detalhes .detalhes-descricao p{
+  margin-top: 10px;    
+}
 
 
+#detalhes .bloco .heart{
+    width: 50px;
+    height: 50px;
+    line-height: 40px;
+    border-radius: 50px;
+    background-color: #fde3cd;
+    font-weight: 500;
+    color: red;
+    border: 1px solid #cce7d0;
+    margin-left: 10px;
+}
+</style>
 
-    <section id="detalhes" class="section-p1">
-        <div class="image-produto">
-            <img src="../img/Adidas1.webp" width="100%" id="Img" alt="Produto em específico">
+<section id="detalhes" class="section-p1">
+    <div class="image-produto">
+        <img src="../img/Adidas1.webp" width="100%" id="Img" alt="Produto em específico">
+    </div>
+
+    {{#with produto }}
+    <div class="detalhes-descricao">
+        <h4>{{ nome }}</h4>
+        <strong>
+            <h2>R$ {{ preco }},00 </h2>
+        </strong>
+        <select>
+            <option>Select Size</option>
+            <option>P</option>
+            <option>M</option>
+            <option>G</option>
+            <option>GG</option>
+        </select>
+        <div class="card-body">
+            <h4>Nome: {{ nome }}</h4>
+            <h4>preco: {{ preco }}</h4>
+            <h4>Quantidade em Estoque: {{ quantEstoque }}</h4>
+            <h4>Categoria: {{ categoria }}</h4>
+            <h4>Marca: {{ marca }}</h4>
+            <form action="/usuarios/carrinho/add-carrinho/{{_id}}" method="post">
+                <button type="submit">Adicionar ao carrinho</button>
+            </form>
+            <a href="http://localhost:8088/usuarios/carrinho">ir para o carrinho</a>
         </div>
-
-        <div class="detalhes-descricao">
-            <h4>Nome do Produto</h4>
-            <strong><h2>R$ Valor </h2> </strong>
-            <select>
-                <option>Select Size</option>
-                <option>P</option>
-                <option>M</option>
-                <option>G</option>
-                <option>GG</option>
-            </select>
-            <div class="cor">
-                <button style="background: red" id="botao-cor"></button>
-                <button style="background: black"  id="botao-cor"></button>
-                <button style="background: white" id="botao-cor"></button>
-                <button style="background: gray" id="botao-cor"></button>
-            </div>
-            <h4>Descrição do produto</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.  Ullam, minus similique?</p>
-            <div class="bloco">
+        <div class="cor">
+            <button style="background: red" id="botao-cor"></button>
+            <button style="background: black" id="botao-cor"></button>
+            <button style="background: white" id="botao-cor"></button>
+            <button style="background: gray" id="botao-cor"></button>
+        </div>
+        <h4>Descrição do produto</h4>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, minus similique?</p>
+        <div class="bloco">
             <input type="number" value="1">
             <button id="carrinho">Adicionar ao carrinho</button>
             <button class="fa fa-heart heart" id="heart"></button>
         </div>
-            <p style="color: red;"> (Quantidade disponivel X) </p>
-        </div>
-        
+        <p style="color: red;"> (Quantidade disponivel X) </p>
+    </div>
+    {{/with }}
+
 </section>
 
 <section id="product1" class="section-p1">
@@ -109,5 +200,3 @@
 
 
 </section>
-
-

@@ -105,9 +105,9 @@ a{
 .container img{
     width: 100px;
     height: auto;
-    margin-left: 500px;
+    /* margin-left: 500px; */
     margin-top: 12px;
 }
 .container h2{
-    margin-left: 400px
+    /* margin-left: 400px */
 }
