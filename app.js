@@ -73,6 +73,14 @@ app.get('/sobrenos', (req, res) => {
 app.use('/admin', admin)
 app.use("/usuarios", usuarios)
 
+// ROTA 404:
+
+app.get('*', (req, res) => {
+  res.send('Página não encontrada')  
+  // Substituir por redirecionamento para página index de admin (caso seja admin), para página index de usuário (caso seja usuário) ou para uma página de login.
+  // Em todos os casos, apresentar uma mensagem de erro, falando que a página procurada não existe
+})
+
 
 //Outros
 const PORT = 8088
