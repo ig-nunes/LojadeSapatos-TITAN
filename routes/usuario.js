@@ -116,9 +116,6 @@ router.get("/recuperar",(req,res) => {
 
 
 
-
-
-
 //  PRODUTOS:
 
 //http://localhost:8088/usuarios/produtos
@@ -317,8 +314,5 @@ router.get('/produtos', (req, res) => {
     res.redirect('http://localhost:8088/admin/favoritos');
   });
   
-  
-
-
 
 module.exports = router

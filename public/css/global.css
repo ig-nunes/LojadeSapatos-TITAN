@@ -9,11 +9,13 @@
 }
 
 .container {
-  width: 80%;
+  width: 100%;
   margin: 100px 0 100px 0;
-  padding: 0;
+  padding-left: 0;
+  padding-right: 0;
 
 }
+
 
 
 /* ------------- HEADER e FOOTER ------------- */
