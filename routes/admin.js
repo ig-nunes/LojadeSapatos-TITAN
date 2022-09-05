@@ -18,6 +18,30 @@ const marcas = ['marca 1', 'marca 2', 'marca 3']
 //http://localhost:8088/admin
 // pegando o view/admim/index
 router.get('/',eAdmin,(req,res) => {
+  if (req.query) {
+    const { busca } = req.query
+
+    Produto.findOne({ nome: busca })
+      .then((produto) => {
+        // console.log(produto)
+        if (produto) {
+          console.log(produto)
+          return res.redirect(`http://localhost:8088/admin/produtos/buscar/${produto._id}`)
+        } else {
+          console.log("produto não encontrado")
+          req.flash("error_msg", "Produto não encontrado")
+        }
+
+      })
+      .catch((err) => {
+        console.log(err)
+        req.flash("error_msg", "Ocorreu algum erro interno")
+        res.redirect('http://localhost:8088/admin')
+      })
+  }
+
+
+
   res.render('admin/index')
 })
 

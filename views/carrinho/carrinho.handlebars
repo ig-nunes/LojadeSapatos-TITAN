@@ -13,14 +13,14 @@
         </thead>
         <tbody>
             {{#each produtos }}
-            {{#if produtos}}
+            {{!-- {{#if produtos}} --}}
             <tr>
                 <td> <a href="#"> <i class="far fa-times-circle"></i></a></td>
                 <td><img src="../img/Adidas1.webp" alt=""></td>
-                <td> {{ nome }} </td>
-                <td>R$ {{ preco }},00</td>
-                <td><input type="number" value="1"></td>
-                <td>R$ 1.999,00</td>
+                <td> {{ item.nome }} </td>
+                <td>R$ {{ item.preco }},00</td>
+                <td> {{ quantity }} </td>
+                <td> {{ price }} </td>
             </tr>
             {{!-- <tr>
                 <td> <a href="#"> <i class="far fa-times-circle"></i></a></td>
@@ -39,7 +39,7 @@
                 <td><input type="number" value="1"></td>
                 <td>R$ 1.999,00</td>
             </tr> --}}
-            {{/if }}
+            {{!-- {{/if }} --}}
             {{/each }}
         </tbody>
     </table>

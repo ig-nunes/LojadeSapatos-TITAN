@@ -77,8 +77,8 @@ app.use("/usuarios", usuarios)
 
 app.get('*', (req, res) => {
   res.send('Página não encontrada')  
-  // Substituir por redirecionamento para página index de admin (caso seja admin), para página index de usuário (caso seja usuário) ou para uma página de login.
-  // Em todos os casos, apresentar uma mensagem de erro, falando que a página procurada não existe
+  // Substituir por redirecionamento para uma página '404' de admin (caso seja admin), ou '404' de usuário (caso seja usuário) ou uma '404' para não usuários (caso não esteja logado).
+  // Em todos os casos, apresentar uma mensagem de erro, falando que a página procurada não existe.
 })
 
 

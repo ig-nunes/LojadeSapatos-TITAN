@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const mongoose = require('mongoose')
+const flash = require('connect-flash')
 require("../models/Usuario")
 const Usuario = mongoose.model("usuarios")
 require('../models/Produto')
@@ -12,6 +13,41 @@ const Favorito = require('../models/Favorito')
 const { eAdmin } = require("../helpers/eAdmin")
 const bcrypt = require("bcryptjs")
 const passport = require("passport")
+
+
+
+
+// INDEX:
+// http://localhost:8088/usuarios
+router.get('/', (req, res) => {
+  // console.log(req.query)
+  if (req.query) {
+    const { busca } = req.query
+
+    Produto.findOne({ nome: busca })
+      .then((produto) => {
+        // console.log(produto)
+        if (produto) {
+          console.log(produto)
+          return res.redirect(`http://localhost:8088/usuarios/produtos/buscar/${produto._id}`)
+        } else {
+          console.log("produto não encontrado")
+          req.flash("error_msg", "Produto não encontrado")
+        }
+
+      })
+      .catch((err) => {
+        console.log(err)
+        req.flash("error_msg", "Ocorreu algum erro interno")
+        res.redirect('http://localhost:8088/usuarios')
+      })
+  }
+
+  res.render('index/index')
+})
+
+
+// CADASTRO
 
 router.get("/registro", (req, res) => {
   res.render("usuarios/registro")
@@ -83,7 +119,7 @@ router.post("/registro", (req, res) => {
 })
 
 
-
+// LOGIN
 
 router.get("/login", (req, res) => {
   res.render("usuarios/login")
@@ -108,22 +144,19 @@ router.get("/logout", (req, res, next) => {
 })
 
 
-router.get("/cupons", (req, res) => {
-  res.render("login/login")
-})
+// router.get("/cupons", (req, res) => {
+//   res.render("login/login")
+// })
 
 router.get("/recuperar", (req, res) => {
   res.render("usuarios/recuperarsenha")
 })
 
 
-// INDEX:
-
-router.get('/', (req, res) => {
-  res.render('index/index')
+// SOBRE NÓS
+router.get("/sobrenos", (req, res) => {
+  res.render("sobrenos/about")
 })
-
-
 
 
 
@@ -182,6 +215,7 @@ router.post('/carrinho/add-carrinho/:id', async (req, res, next) => {
 router.get('/carrinho', async (req, res, next) => {
   let desconto = 0;
   let array = [];
+  // console.log(req.session.cart)
 
   if (!req.session.cart) {
     if (req.query.cupom || req.query.cupom == "" || req.query.cupom != undefined || req.query.cupom != null) {
@@ -224,6 +258,10 @@ router.get('/carrinho', async (req, res, next) => {
       }
     }
   }
+
+  let produtos = cart.getItems();
+
+  console.log(produtos)
 
   res.render('carrinho/carrinho', { produtos: cart.getItems(), array, cart });
 

@@ -44,7 +44,7 @@ h2 {
     text-align: center;
 }
 
-#cart table td :nth-child(5) input {
+/* #cart table td :nth-child(5) input {
     width: 70px;
     padding: 10px 5px 10px 15px;
 }
@@ -53,7 +53,7 @@ h2 {
     width: 50px;
     height: 40px;
     border-radius: 5px;
-}
+} */
 
 #cart table thead {
     border: 1px solid black;
@@ -66,11 +66,12 @@ h2 {
     font-weight: 700;
     font-size: 15px;
     padding: 18px 0;
-
+    text-align: center;
 }
 
 #cart table tbody tr td {
     padding-top: 15px;
+    text-align: center;
 }
 
 #cart table tbody td {
@@ -124,7 +125,6 @@ h2 {
     border-collapse: collapse;
     border-radius: 5px;
     width: 100%;
-
 }
 
 #finalizar-compra table td {
@@ -132,3 +132,4 @@ h2 {
     border: 1px solid #e2e9e1;
     padding: 10px;
     font-size: 13px;
+}

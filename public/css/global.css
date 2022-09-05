@@ -47,6 +47,7 @@ body {
   outline: none;
   display: flex;
   align-items: center;
+  justify-content: center;
   background-color: #5a8dcc;
   margin-left: 50px;
   height: 50px;
