@@ -192,10 +192,31 @@ router.get('/produtos/buscar/:id', (req, res) => {
 })
 
 
+// CUPONS
+//http://localhost:8088/usuarios/cupons/buscar/:id
+// router.get('/cupons/buscar/:id', (req, res) => {
+//   const { id } = req.params
+//   Cupom.findById(id).then((cupom) => {
+//     if (cupom === null) {
+//       req.flash('error_msg', 'Cupom não encontrado')
+//       res.redirect('/usuarios/cupons')
+//     } else {
+//       res.render('admin/buscarcupom', { cupom })
+//     }
+//   })
+//     .catch((err) => {
+//       req.flash('error_msg', 'Produto não encontrado')
+//       res.redirect('/usuarios/produtos')
+//     })
+// })
+
+
+
+
 
 // Carrinho
 
-// http://localhosto:8088/usuarios/carrinho/add-carrinho/:id
+// http://localhosto:8088/usuarios/carrinho/add-carrinho/:id            adicionar ao carrinho nos produtos
 router.post('/carrinho/add-carrinho/:id', async (req, res, next) => {
   const produtoId = req.params.id;
   var cart = new Carrinho(req.session.cart ? req.session.cart : {});
@@ -211,11 +232,35 @@ router.post('/carrinho/add-carrinho/:id', async (req, res, next) => {
 });
 
 
+// http://localhosto:8088/usuarios/carrinho/add-mais-carrinho/:id           Adicionar mais no próprio carrinho
+router.post('/carrinho/add-mais-carrinho/:id', async (req, res, next) => {
+  const produtoId = req.params.id;
+  var cart = new Carrinho(req.session.cart ? req.session.cart : {});
+  const produto = await Produto.findById(produtoId);
+  cart.add(produto, produto._id);
+  req.session.cart = cart;
+  req.session.cart.items[produtoId].price = produto.preco * req.session.cart.items[produtoId].quantity;
+  // if (req.session.favorito.items[produtoId]){
+  //   delete req.session.favorito.items[produtoId]
+  // }
+
+  res.redirect('http://localhost:8088/usuarios/carrinho')
+});
+
+
 // http://localhosto:8088/usuarios/carrinho
 router.get('/carrinho', async (req, res, next) => {
   let desconto = 0;
   let array = [];
-  // console.log(req.session.cart)
+  let totalDesconto = 0;
+  let precoTotal = 0;
+  req.session.precoTotal = 0;
+
+  // console.log(totalDesconto)
+  if (req.session.totalDesconto == undefined) {
+    req.session.totalDesconto = 0
+  };
+
 
   if (!req.session.cart) {
     if (req.query.cupom || req.query.cupom == "" || req.query.cupom != undefined || req.query.cupom != null) {
@@ -232,6 +277,7 @@ router.get('/carrinho', async (req, res, next) => {
 
     if (cupomEncontrado) {
       desconto = cupomEncontrado.desconto;
+      req.session.totalDesconto += desconto
     }
   }
 
@@ -240,6 +286,7 @@ router.get('/carrinho', async (req, res, next) => {
   if (cart.totalPrice >= desconto) {
     cart.totalPrice = cart.totalPrice - desconto;
     req.session.cart.totalPrice = cart.totalPrice;
+    // precoTotal = cart.totalPrice
   } else {
     req.flash("error_msg", "O cupom só pode ser adicionado se o valor total a ser pago for pelo menos igual ao valor do cupom")
   }
@@ -247,6 +294,7 @@ router.get('/carrinho', async (req, res, next) => {
   for (var item in cart.items) {
     if (!cart.items.hasOwnProperty(item)) continue;
     var obj = cart.items[item];
+    req.session.precoTotal += obj.price
 
     for (var prop in obj) {
       if (!obj.hasOwnProperty(prop)) {
@@ -259,21 +307,36 @@ router.get('/carrinho', async (req, res, next) => {
     }
   }
 
-  let produtos = cart.getItems();
+  if (Object.keys(cart.items).length == 0) {
+    req.session.totalDesconto = 0
+  }
+  precoTotal = req.session.precoTotal
 
-  console.log(produtos)
+  if (req.session.totalDesconto < req.session.precoTotal){
+    totalDesconto = req.session.totalDesconto
+  } 
+  else {
+    req.session.totalDesconto = req.session.precoTotal - cart.totalPrice
+    totalDesconto = req.session.totalDesconto
+  }
 
-  res.render('carrinho/carrinho', { produtos: cart.getItems(), array, cart });
+  res.render('carrinho/carrinho', { produtos: cart.getItems(), array, cart, totalDesconto, precoTotal });
 
 });
 
 // http://localhosto:8088/usuarios/carrinho/remover/:id
-router.post('/carrinho/remover/:id', (req, res) => {
+router.post('/carrinho/remover/:id', async (req, res) => {
   const { id } = req.params;
+  const produto = await Produto.findById(id);
   var cart = new Carrinho(req.session.cart ? req.session.cart : {});
 
   cart.remove(id);
   req.session.cart = cart;
+  if (produto) {
+    if (req.session.cart.items[id]) {
+      req.session.cart.items[id].price = req.session.cart.items[id].price - produto.preco;
+    }
+  }
 
   // Impedir que o valor total fique menor do que 0
   if (req.session.cart.totalPrice < 0) {
@@ -310,7 +373,7 @@ router.post('/carrinho/finalizar-compra', async (req, res, next) => {
       }
     }
 
-    res.redirect('http://localhost:80800/usuarios/produtos');
+    res.redirect('http://localhost:8088/usuarios/produtos');
   }
 })
 
@@ -345,7 +408,6 @@ router.get('/favoritos', async (req, res, next) => {
   }
 
   var favorito = new Favorito(req.session.favorito);
-  // console.log(favorito);
   console.log(req.session.favorito)
 
   res.render('favoritos/favoritos', { produtos: favorito.getItems() });

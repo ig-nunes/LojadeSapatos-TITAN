@@ -1,78 +1,84 @@
+<section id="product1" class="section-p1">
+    <h2>Lista de desejos</h2>
+    <div class="pro-container">
+        {{#each produtos }}
+        <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
+            <img src="../img/Adidas1.webp" alt="Produto">
+            <div class="descricao">
+                <span>{{ item.categoria }}</span>
+                <h5> {{ item.nome }} </h5>
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h4>{{ item.preco }}</h4>
+            </div>
+            {{!-- <i class="fal fa-shopping-cart cart"></i> --}}
+            <form action="http://localhost:8088/usuarios/carrinho/add-carrinho/{{item._id}}" method="post">
+                <button type="submit">Adicionar ao carrinho</button>
+            </form>
+            {{!-- <a href="favoritos.html"><i class="fa fa-heart heart"></i></a> --}}
+            <form action="/usuarios/favoritos/remover/{{ item._id }}" method="POST">
+                <input type="hidden" name="id" value="{{ item._id }}">
+                <button type="submit" class="btn btn-danger">Remover favoritos</button>
+            </form>
+        </div>
+        {{/each }}
 
-
-
-    <section id="product1" class="section-p1">
-        <h2>Lista de desejos</h2>
-        <div class="pro-container">
-            <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
-                <img src="../img/Adidas1.webp" alt="Produto">
-                <div class="descricao">
-                    <span>esportivo</span>
-                    <h5> Adizero Boston 11 </h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>R$1.399,99</h4>
+        {{!-- <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
+            <img src="../img/Adidas2.webp" alt="Produto">
+            <div class="descricao">
+                <span>esportivo</span>
+                <h5>Adizero RC 4</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
                 </div>
-                <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
-                <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
+                <h4>R$499,99</h4>
             </div>
-            <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
-                <img src="../img/Adidas2.webp" alt="Produto">
-                <div class="descricao">
-                    <span>esportivo</span>
-                    <h5>Adizero RC 4</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>R$499,99</h4>
+            <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
+            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
+        </div>
+        <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
+            <img src="../img/Adidas3.webp" alt="Produto">
+            <div class="descricao">
+                <span>esportivo</span>
+                <h5>Supernova+</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
                 </div>
-                <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
-                <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
+                <h4>R$499,99 </h4>
             </div>
-            <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
-                <img src="../img/Adidas3.webp" alt="Produto">
-                <div class="descricao">
-                    <span>esportivo</span>
-                    <h5>Supernova+</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>R$499,99 </h4>
+            <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
+            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
+        </div>
+        <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
+            <img src="../img/Adidas4.webp" alt="Produto">
+            <div class="descricao">
+                <span>esportivo</span>
+                <h5>Dropset Trainer</h5>
+                <div class="star">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
                 </div>
-                <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
-                <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
+                <h4>R$799,99</h4>
             </div>
-            <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
-                <img src="../img/Adidas4.webp" alt="Produto">
-                <div class="descricao">
-                    <span>esportivo</span>
-                    <h5>Dropset Trainer</h5>
-                    <div class="star">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h4>R$799,99</h4>
-                </div>
-                <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
-                <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
-            </div>
+            <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
+            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
+        </div> --}}
 
 
 </section>
-

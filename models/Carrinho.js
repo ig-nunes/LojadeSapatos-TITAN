@@ -16,17 +16,19 @@ module.exports = function Carrinho(cart) {
 
     this.remove = function (id) {
         var cartItem = this.items[id]
-        if (cartItem.quantity == 1) {
-            // this.totalItems -= this.items[id].quantity;
-            // this.totalPrice -= this.items[id].price;
-            this.items[id].quantity -= 1;
-            this.totalItems -= 1;
-            this.totalPrice -= this.items[id].item.preco;
-            delete this.items[id];
-        } else {
-            this.items[id].quantity -= 1;
-            this.totalItems -= 1;
-            this.totalPrice -= this.items[id].item.preco;
+        if (cartItem){
+            if (cartItem.quantity == 1) {
+                // this.totalItems -= this.items[id].quantity;
+                // this.totalPrice -= this.items[id].price;
+                this.items[id].quantity -= 1;
+                this.totalItems -= 1;
+                this.totalPrice -= this.items[id].item.preco;
+                delete this.items[id];
+            } else {
+                this.items[id].quantity -= 1;
+                this.totalItems -= 1;
+                this.totalPrice -= this.items[id].item.preco;
+            }
         }
     };
 

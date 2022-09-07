@@ -3,6 +3,7 @@
     <table width="100%">
         <thead>
             <tr>
+                <td>Adicionar</td>
                 <td>Remover</td>
                 <td>Imagem</td>
                 <td>Produto</td>
@@ -15,7 +16,18 @@
             {{#each produtos }}
             {{!-- {{#if produtos}} --}}
             <tr>
-                <td> <a href="#"> <i class="far fa-times-circle"></i></a></td>
+                {{!-- <td> <a href="#"> <i class="far fa-times-circle"></i></a></td> --}}
+                <td>
+                    <form action="http://localhost:8088/usuarios/carrinho/add-mais-carrinho/{{item._id}}" method="post">
+                        <button>Adicionar</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="http://localhost:8088/usuarios/carrinho/remover/{{ item._id }}" method="post">
+                        {{!-- <input type="hidden" name="id" value="{{ item._id }}"> --}}
+                        <button type="submit">Remover</button>
+                    </form>
+                </td>
                 <td><img src="../img/Adidas1.webp" alt=""></td>
                 <td> {{ item.nome }} </td>
                 <td>R$ {{ item.preco }},00</td>
@@ -49,8 +61,13 @@
     <div id="cupom">
         <h3><strong>Aplique o cupom</strong></h3>
         <div>
-            <input type="text" placeholder="Insira seu cupom de desconto">
-            <button id="botaofinal">Aplicar</button>
+            <form action="http://localhost:8088/usuarios/carrinho" method="get">
+                <label hidden for="cupom">Cupom de desconto</label>
+                <input type="text" name="cupom" id="cupom" placeholder="insira seu cupom de desconto">
+                <button type="submit" id="botaofinal">Aplicar</button>
+            </form>
+            {{!-- <input type="text" placeholder="Insira seu cupom de desconto">
+            <button id="botaofinal">Aplicar</button> --}}
         </div>
     </div>
 
@@ -59,16 +76,29 @@
         <table>
             <tr>
                 <td>Subtoltal</td>
-                <td>$Valor</td>
+                
+                <td>{{ precoTotal }}</td>
+                
             </tr>
             <tr>
+            
                 <td>Desconto</td>
-                <td>Aplicado</td>
+                <td>{{ totalDesconto }}</td>
+                
             </tr>
-            <td><strong>Total</strong></td>
-            <td><strong>$Valor</strong></td>
+            <tr>
+                <td><strong>Total</strong></td>
+                {{#with cart}}
+                <td><strong>${{ totalPrice }}</strong></td>
+                {{/with}}
             </tr>
         </table>
-        <button style="margin-top:10px" id="botaofinal" onclick="window.alert('Compra finalizada')">Comprar</button>
+        <form action="/usuarios/carrinho/finalizar-compra" method="post">
+            <input type="hidden" name="array" value="{{ array }}">
+            <button type="submit" style="margin-top:10px" id="botaofinal"
+                onclick="window.alert('Compra finalizada')">Comprar</button>
+        </form>
+        {{!-- <button style="margin-top:10px" id="botaofinal"
+            onclick="window.alert('Compra finalizada')">Comprar</button> --}}
     </div>
 </section>
