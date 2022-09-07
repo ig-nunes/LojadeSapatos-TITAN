@@ -13,6 +13,10 @@ const Favorito = require('../models/Favorito')
 const { eAdmin } = require("../helpers/eAdmin")
 const bcrypt = require("bcryptjs")
 const passport = require("passport")
+require('../models/Faleconosco')
+const Faleconosco = mongoose.model("faleConosco")
+
+
 
 
 
@@ -366,8 +370,29 @@ router.post('/favoritos/remover/:id', (req, res) => {
 });
 
 
+// FALE CONOSCO
+router.get("/faleconosco", (req, res) => {
+  res.render("faleconosco/faleconosco")
+})
 
+router.post("/faleconosco/enviar", (req, res) => {
 
+  const dadosFaleconosco = {
+    name: req.body.name,
+    email: req.body.email,
+    text: req.body.text,
+  }
+
+  new Faleconosco(dadosFaleconosco).save().then(() => {
+    req.flash("success_msg", "Formulario enviado e salvo no banco de dados com sucesso")
+    res.redirect("/usuarios/faleconosco")
+  }).catch((err) => { 
+    req.flash("error_msg", "Erro ao enviar o formulario")
+    res.redirect("/usuarios/faleconosco")
+  })
+
+})
+  
 
 
 module.exports = router

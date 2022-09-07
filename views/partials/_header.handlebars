@@ -52,10 +52,10 @@
         {{#if user.eAdmin}} {{!-- aparecendo apenas para usuario logado que seja admin --}}
         <a class="ml-3 text-dark text-decoration-none" href="/admin/cupons" id="products-menu"> Cadastrar Cupons</a>
         <a class="ml-3 text-dark text-decoration-none" href="/admin/produtos" id="products-menu"> Cadastrar Produtos</a>
+        <a class="ml-3 text-dark text-decoration-none" href="/admin/faleconosco" id="home-menu"> Sugestoes dos usuarios</a>
         {{else}}
         {{/if}}
         {{#if user}} {{!-- aparecendo para qualquer um que esteja logado --}}
-        <a class="ml-3 text-dark text-decoration-none" href="/" id="home-menu">Home</a>
         <a class="ml-3 text-dark text-decoration-none" href="/usuarios/produtos" id="products-menu"> Produtos</a>
         <a class="ml-3 text-dark text-decoration-none" href="/usuarios/carrinho" id="cart-menu"></i> Carrinho</a>
         <a class="ml-3 text-dark text-decoration-none" href="/usuarios/favoritos" id="favorites-menu">Favoritos</a>
