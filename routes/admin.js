@@ -7,11 +7,13 @@ require('../models/Cupom')
 const Cupom = mongoose.model('cupons')
 const Carrinho = require('../models/Carrinho')
 const Favorito = require('../models/Favorito')
-const {eAdmin} = require("../helpers/eAdmin")
+const { eAdmin } = require("../helpers/eAdmin")
+require('../models/Faleconosco')
+const Faleconosco = mongoose.model("faleConosco")
 
 
 
-const categorias = ['categoria 1', 'categoria 2', 'categoria 3' ]
+const categorias = ['categoria 1', 'categoria 2', 'categoria 3','categoria 4']
 const marcas = ['marca 1', 'marca 2', 'marca 3']
 
 
@@ -457,6 +459,31 @@ router.post('/favoritos/remover/:id', (req, res) => {
 
 
 
+//FALE CONOSCO
+router.get("/faleconosco",eAdmin, (req, res) => {
+  Faleconosco.find().lean().then((faleConosco) => { 
+    res.render("admin/faleconosco", {faleConosco: faleConosco})
+  }).catch((err) => { 
+    req.flash("error_msg","Houve um erro ao carregar os fomularios ")
+    res.redirect("admin/faleconosco")
+  })
+  
+})
+
+router.post('/faleconosco/deletar/:id', (req, res) => {
+  Faleconosco.deleteOne({_id: req.body.id}).then(() => { 
+    req.flash("success_msg","Formulario deletado com sucesso")
+    res.redirect("/admin/faleconosco")
+  }).catch((err) => { 
+    req.flash("error_msg","Houve um erro ao deletar o fomulario")
+    res.redirect("/admin/faleconosco")
+  })
+//   const { id } = req.params;
+//   var faleconosco = new Faleconosco(req.session.faleconosco ? req.session.faleconosco : {});
+//   faleconosco.remove(id);
+//   req.session.faleconosco = faleconosco;
+  // 
+});
 
 module.exports = router
 

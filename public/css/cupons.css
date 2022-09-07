@@ -1,0 +1,43 @@
+#texto{
+    font-family: 'Nunito Sans', sans-serif;
+    margin-left: 5%;
+
+}
+
+
+#faleconosco{
+    text-decoration: none;
+    color: black;
+}
+
+#faleconosco:hover {
+    color: #17a2b8;
+  }
+
+
+#texto2{
+    font-family: 'Nunito Sans', sans-serif;
+    margin: 2%;
+
+}
+#card-central {
+    margin-left: 25%;
+    height: 50%;
+    width: 50%;
+    border:white;
+    border-radius: 10px;
+}
+
+#card-nome-desconto {
+    margin: 30px;
+}
+
+#card-central2 {
+    margin-left: 22%;
+    height: 50%;
+    width: 55%;
+    border:white;
+    border-radius: 10px;
+    margin-top: 5%;
+    margin-bottom: 4%;
+}

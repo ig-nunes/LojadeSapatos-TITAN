@@ -25,7 +25,7 @@ require("./config/auth")(passport)
       app.use(flash())
 //Middleware  
 app.use((req, res, next) => {
-      res.locals.success_msg = req.flash("sucess_msg") //*criando variaveis globais atraves do locals para serem acessadas em qualquer pasta*
+      res.locals.success_msg = req.flash("success_msg") //*criando variaveis globais atraves do locals para serem acessadas em qualquer pasta*
       res.locals.error_msg = req.flash("error_msg")
       res.locals.error = req.flash("error")
       res.locals.user = req.user || null
@@ -53,7 +53,6 @@ mongoose.connect("mongodb://localhost/teste").then(() => {
 //Public
 app.use(express.static(path.join(__dirname, "public")))
 app.use((req, res, next) => {
-  console.log("EU sou um middleware, apareco sempre que vc faz uma req")
   next()
 })
 
@@ -76,7 +75,9 @@ app.use("/usuarios", usuarios)
 // ROTA 404:
 
 app.get('*', (req, res) => {
-  res.send('Página não encontrada')  
+  res.render('404/404')
+   
+  
   // Substituir por redirecionamento para uma página '404' de admin (caso seja admin), ou '404' de usuário (caso seja usuário) ou uma '404' para não usuários (caso não esteja logado).
   // Em todos os casos, apresentar uma mensagem de erro, falando que a página procurada não existe.
 })

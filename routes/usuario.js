@@ -13,6 +13,10 @@ const Favorito = require('../models/Favorito')
 const { eAdmin } = require("../helpers/eAdmin")
 const bcrypt = require("bcryptjs")
 const passport = require("passport")
+require('../models/Faleconosco')
+const Faleconosco = mongoose.model("faleConosco")
+
+
 
 
 
@@ -144,9 +148,12 @@ router.get("/logout", (req, res, next) => {
 })
 
 
-// router.get("/cupons", (req, res) => {
-//   res.render("login/login")
-// })
+// CUPONS
+router.get('/cupons', (req, res) => {
+  Cupom.find({}).then((cupons) => {
+    res.render('cupons/cupons', { cupons })
+  })
+})
 
 router.get("/recuperar", (req, res) => {
   res.render("usuarios/recuperarsenha")
@@ -165,6 +172,7 @@ router.get("/sobrenos", (req, res) => {
 //http://localhost:8088/usuarios/produtos
 router.get('/produtos', (req, res) => {
   Produto.find({}).then((produtos) => {
+    console.log(req.session.favorito)
     res.render('produtos/produtos', { produtos })
   }).catch((err) => {
     req.flash('error_msg', 'Houve um error ao listar os produtos')
@@ -227,7 +235,6 @@ router.post('/carrinho/add-carrinho/:id', async (req, res, next) => {
   // if (req.session.favorito.items[produtoId]){
   //   delete req.session.favorito.items[produtoId]
   // }
-
   res.redirect('http://localhost:8088/usuarios/produtos')
 });
 
@@ -320,6 +327,8 @@ router.get('/carrinho', async (req, res, next) => {
     totalDesconto = req.session.totalDesconto
   }
 
+  console.log(req.session.favorito)
+
   res.render('carrinho/carrinho', { produtos: cart.getItems(), array, cart, totalDesconto, precoTotal });
 
 });
@@ -406,9 +415,9 @@ router.get('/favoritos', async (req, res, next) => {
   if (!req.session.favorito) {
     return res.render('favoritos/favoritos');
   }
-
-  var favorito = new Favorito(req.session.favorito);
   console.log(req.session.favorito)
+  var favorito = new Favorito(req.session.favorito);
+  // console.log(req.session.favorito)
 
   res.render('favoritos/favoritos', { produtos: favorito.getItems() });
 
@@ -421,13 +430,36 @@ router.post('/favoritos/remover/:id', (req, res) => {
   var favorito = new Favorito(req.session.favorito ? req.session.favorito : {});
 
   favorito.remove(id);
+  console.log(favorito)
+  console.log(req.session.favorito)
   req.session.favorito = favorito;
   res.redirect('http://localhost:8088/usuarios/favoritos');
 });
 
 
+// FALE CONOSCO
+router.get("/faleconosco", (req, res) => {
+  res.render("faleconosco/faleconosco")
+})
 
+router.post("/faleconosco/enviar", (req, res) => {
 
+  const dadosFaleconosco = {
+    name: req.body.name,
+    email: req.body.email,
+    text: req.body.text,
+  }
+
+  new Faleconosco(dadosFaleconosco).save().then(() => {
+    req.flash("success_msg", "Formulario enviado e salvo no banco de dados com sucesso")
+    res.redirect("/usuarios/faleconosco")
+  }).catch((err) => { 
+    req.flash("error_msg", "Erro ao enviar o formulario")
+    res.redirect("/usuarios/faleconosco")
+  })
+
+})
+  
 
 
 module.exports = router
