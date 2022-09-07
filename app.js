@@ -76,7 +76,9 @@ app.use("/usuarios", usuarios)
 // ROTA 404:
 
 app.get('*', (req, res) => {
-  res.send('Erro 404, pagina que vc digitou n existe')  
+  res.render('404/404')
+   
+  
   // Substituir por redirecionamento para uma página '404' de admin (caso seja admin), ou '404' de usuário (caso seja usuário) ou uma '404' para não usuários (caso não esteja logado).
   // Em todos os casos, apresentar uma mensagem de erro, falando que a página procurada não existe.
 })
