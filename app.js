@@ -25,7 +25,7 @@ require("./config/auth")(passport)
       app.use(flash())
 //Middleware  
 app.use((req, res, next) => {
-      res.locals.success_msg = req.flash("sucess_msg") //*criando variaveis globais atraves do locals para serem acessadas em qualquer pasta*
+      res.locals.success_msg = req.flash("success_msg") //*criando variaveis globais atraves do locals para serem acessadas em qualquer pasta*
       res.locals.error_msg = req.flash("error_msg")
       res.locals.error = req.flash("error")
       res.locals.user = req.user || null
@@ -53,7 +53,6 @@ mongoose.connect("mongodb://localhost/teste").then(() => {
 //Public
 app.use(express.static(path.join(__dirname, "public")))
 app.use((req, res, next) => {
-  console.log("EU sou um middleware, apareco sempre que vc faz uma req")
   next()
 })
 

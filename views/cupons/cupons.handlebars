@@ -1,19 +1,21 @@
-<h2>Lista de Cupons Disponiveis:</h2>
+<h2 id="texto">Lista de Cupons Disponiveis:</h2>
 <hr>
 
 
 {{#each cupons}}
-        <div class="card">
-            <div class="card-body">
-                <h4>Nome: {{ nome }}</h4>
-                <h4>Desconto: {{ desconto }} R$</h4>
-                <form action="/admin/cupons/deletar" method="POST">
-                    <input type="hidden" name="id" value="{{_id}}">
-                </form>
+        <div class="card" id="card-central">
+            <div id="card-nome-desconto">
+                <h4 id="texto">Nome: {{ nome }}</h4>
+                <h4 id="texto">Desconto: {{ desconto }} R$</h4>
             </div>
         </div>
 {{else}}
-    <h4>Nenhum cupom registrado</h4>
+<div class="card" id="card-central2">
+    <h4 id="texto2">Nenhum cupom registrado.</h4>
+    <h4 id="texto2">Peça para um administrador criar um cupom clicando <a id="faleconosco" href="./faleconosco">aqui</a>.</h4>
+</div>
+  
 {{/each}}
 
 <a href="http://localhost:8088/usuarios/produtos"><button class="btn btn-info m-4">voltar para produtos</button></a>
+

@@ -366,6 +366,17 @@ router.post('/favoritos/remover/:id', (req, res) => {
 });
 
 
+//FALE CONOSCO
+router.get("/faleconosco", (req, res) => {
+  res.render("faleconosco/faleconosco")
+})
+
+router.post("/faleconosco/enviar", (req, res) => {
+  res.redirect('http://localhost:8088/usuarios/faleconosco')
+})
+
+
+
 
 
 
