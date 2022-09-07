@@ -144,9 +144,12 @@ router.get("/logout", (req, res, next) => {
 })
 
 
-// router.get("/cupons", (req, res) => {
-//   res.render("login/login")
-// })
+// CUPONS
+router.get('/cupons', (req, res) => {
+  Cupom.find({}).then((cupons) => {
+    res.render('cupons/cupons', { cupons })
+  })
+})
 
 router.get("/recuperar", (req, res) => {
   res.render("usuarios/recuperarsenha")
@@ -206,7 +209,6 @@ router.post('/carrinho/add-carrinho/:id', async (req, res, next) => {
   // if (req.session.favorito.items[produtoId]){
   //   delete req.session.favorito.items[produtoId]
   // }
-
   res.redirect('http://localhost:8088/usuarios/produtos')
 });
 

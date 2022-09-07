@@ -17,7 +17,7 @@ const Produto = new Schema({
     },
     categoria: {
         type: 'String',
-        enum: ['categoria 1', 'categoria 2', 'categoria 3']
+        enum: ['categoria 1', 'categoria 2', 'categoria 3','categoria 4']
     }
     ,
     marca: {

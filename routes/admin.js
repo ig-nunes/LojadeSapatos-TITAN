@@ -11,7 +11,7 @@ const {eAdmin} = require("../helpers/eAdmin")
 
 
 
-const categorias = ['categoria 1', 'categoria 2', 'categoria 3' ]
+const categorias = ['categoria 1', 'categoria 2', 'categoria 3','categoria 4']
 const marcas = ['marca 1', 'marca 2', 'marca 3']
 
 

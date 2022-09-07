@@ -19,8 +19,12 @@
                 </div>
                 <h4>R$ {{ preco }},00</h4>
             </div>
-            <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
-            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
+            <form action="./carrinho/add-carrinho/{{_id}}" method="post">
+                <button type="submit"><i class="fal fa-shopping-cart cart"></i></button>
+            </form>
+            <form action="./favoritos/add-favoritos/{{_id}}" method="post">
+                <button type="submit"><i class="fa fa-heart heart"></i></button>
+            </form>
         </div>
         {{/each }}
 
