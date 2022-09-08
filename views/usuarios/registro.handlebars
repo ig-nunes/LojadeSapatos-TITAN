@@ -6,10 +6,17 @@
 {{/each}}
 
 
-  <h2> Crie sua conta</h2>
-<section class="area-login">
+  
+<section class="area-login" id="section" >
+    
+    <div class="login">
+    <h2 id="crie-sua-conta">Crie sua conta</h2>
+    <img id="logo-cadastro" src="../img/logo14.svg">
+    </div>
+
 <div class="login">
-        <form action="" method="post">
+    
+        <form action="" method="post" class="">
             <label for="nome">Nome:</label>
                 <input type="text" name="nome" class="form-control" required>
             <label for="email">Email: </label>
@@ -23,3 +30,93 @@
         </form>
 </div>
 </section>
+
+
+
+  
+<main id="main">
+  <section id="">
+  <div class="container">
+    <div>
+      <img id="logo-cadastro2" src="../img/logo14.svg">
+    </div>
+    <h2>
+     Informações adicionais
+    </h2>
+    <hr>
+    <form>
+      <div class="row m-4">
+        <div class="col-sm-12 col-md-6">
+          
+          <fieldset class="row">
+            <legend>Dados Pessoais</legend> 
+            <div class="col-md-6 col-xl-5 mb-3">
+              <label for="cpf" class="form-label">CPF</label>
+              <span class="text-muted">(somente números)</span>
+              <input type="text" class="form-control" id="cpf">
+            </div>
+            <div class="col-md-6 ">
+              <label for="datadenascimento" class="form-label">Data de Nascimento</label>
+              <input type="date" class="form-control" id="datadenascimento">
+            </div>
+          </fieldset>
+          
+          <fieldset class="row">
+            <legend>Contatos</legend>
+           <div class="col-md-6 col-xl-7 mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="telefone" placeholder="(71) 999999999">
+            <span class="text-muted">(com DDD, somente números)</span>
+         </div>
+         
+         <div class="form-check mt-5">
+          <input type="checkbox" class="form-check-input" value="" id="promocoes">
+          <label for="promocoes" class="form-check-label">Desejo receber informações sobre promoções.</label>
+          <div class="mb-3">
+            <br>
+            <input type="button" value="Adicionar ao meu cadastro" class="btn btn-info btn-outline-light"
+            onclick="window.alert('Informações adicionadas ao cadastro')" id="botaocriar" style="background-color: #5a8dcc;">
+            <a class="btn btn-danger btn-outline-light"  href="#section" id="botaocriar" style="background-color: red;">Cancelar</a>
+          </div>
+
+
+          </fieldset>
+
+        </div>
+        
+        <div class="col-sm-12 col-md-6">
+          
+          <fieldset class="row">
+            <legend>Endereço</legend> 
+            <div class="col-md-6 col-xl-10 mb-3">
+              <label for="logradouro" class="form-label">Logradouro</label>
+              <input type="text" class="form-control" id="logradouro">
+           </div>
+            <div class="col-md-6 col-xl-5 mb-3">
+              <label for="cep" class="form-label">CEP</label>
+              <span class="text-muted">(somente números)</span>
+              <input type="text" class="form-control" id="cep">
+            </div>
+            <div class=" ml-3">
+              <label for="cep" class="form-label">Número da residência</label>
+              <span class="text-muted">(somente números)</span>
+              <input type="text" class="form-control" id="cep">
+            </div>
+            <div class="col-md-6 col-xl-10 mb-3">
+              <label for="complemento" class="form-label">Complemento</label>
+              <input type="text" class="form-control" id="complemento">
+           </div>
+          </fieldset>
+          
+        
+        </div>
+
+      </div>
+      <hr>
+      
+
+      </div>
+    </form>
+  </div>
+</section>
+</main>

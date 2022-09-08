@@ -147,6 +147,9 @@ router.get("/logout", (req, res, next) => {
   })
 })
 
+router.get("/confirmarrecuperacaosenha", (req, res) => {
+  res.render("usuarios/confirmarrecuperacaodesenha")
+})
 
 // CUPONS
 router.get('/cupons', (req, res) => {
