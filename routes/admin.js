@@ -13,8 +13,8 @@ const Faleconosco = mongoose.model("faleConosco")
 
 
 
-const categorias = ['categoria 1', 'categoria 2', 'categoria 3','categoria 4']
-const marcas = ['marca 1', 'marca 2', 'marca 3']
+const categorias = ['casual', 'esportivo', 'infantil']
+const marcas = ['adidas', 'puma', 'nike']
 
 
 //http://localhost:8088/admin
@@ -185,7 +185,7 @@ router.get('/produtos', (req, res) => {
 
 //http://localhost:8088/admin/produtos/buscar/:id
 router.get('/produtos/buscar/:id', (req, res) => {
-  const { id } = req.params
+  const {id} = req.params
   Produto.findById(id).then((produto) => {
     if (produto === null) {
       req.flash('error_msg', 'Produto não encontrado')
@@ -478,11 +478,6 @@ router.post('/faleconosco/deletar/:id', (req, res) => {
     req.flash("error_msg","Houve um erro ao deletar o fomulario")
     res.redirect("/admin/faleconosco")
   })
-//   const { id } = req.params;
-//   var faleconosco = new Faleconosco(req.session.faleconosco ? req.session.faleconosco : {});
-//   faleconosco.remove(id);
-//   req.session.faleconosco = faleconosco;
-  // 
 });
 
 module.exports = router
