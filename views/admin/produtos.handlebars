@@ -1,11 +1,12 @@
 <h2>Lista de Produtos:</h2>
 <hr>
-<a href="/admin/produtos/add"><button class="btn btn-info m-4">Novo Produto</button></a>
+<center>
+    <a href="/admin/produtos/add"><button class="btn btn-info m-4">Novo Produto</button></a>
+ </center>
 
-
+<div class="admin-container">
 {{#each produtos}}
-        <div class="card">
-            <div class="card-body">
+            <div class="admin">
                 <h4>Nome: {{ nome }}</h4>
                 <h4>preco: {{ preco }}</h4>
                 <a href="http://localhost:8088/admin/produtos/buscar/{{_id}}" class="btn btn-success">Ver detalhes do produto</a>
@@ -20,11 +21,12 @@
                     <button type="submit" class="btn btn-danger">Deletar produto</button>
                 </form>
             </div>
-        </div>
 {{else}}
     <h4>Nenhum produto registrado</h4>
 {{/each}}
-
+</div>
+<center>
 <a href="http://localhost:8088/admin/carrinho"><button class="btn btn-info m-4">Ir para o carrinho</button></a>
 <a href="http://localhost:8088/admin/favoritos"><button class="btn btn-info m-4">Ir para os favoritos</button></a>
 <a href="http://localhost:8088/admin/cupons"><button class="btn btn-info m-4">Ver todos os cupons</button></a>
+</center>
