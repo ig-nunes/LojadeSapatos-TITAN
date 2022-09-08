@@ -16,14 +16,12 @@ const Produto = new Schema({
         required: true
     },
     categoria: {
-        type: 'String',
-        enum: ['categoria 1', 'categoria 2', 'categoria 3','categoria 4']
-    }
-    ,
+        type: String,
+        enum: ['casual', 'esportivo', 'infantil']
+    },
     marca: {
         type: String,
-        lowercase: true,
-        enum: ['marca 1', 'marca 2', 'marca 3']
+        enum: ['adidas', 'puma', 'nike']
     }
 })
 
