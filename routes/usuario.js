@@ -181,22 +181,31 @@ router.get('/produtos', (req, res) => {
 })
 
 //http://localhost:8088/usuarios/produtos/buscar/:id
-router.get('/produtos/buscar/:id', (req, res) => {
+router.get('/produtos/buscar/:id', async (req, res) => {
+  let baixoEstoque = false
+  let conteudo = false
   const { id } = req.params
-  // console.log(id)
-  Produto.findById(id).then((produto) => {
-    if (produto === null) {
-      req.flash('error_msg', 'Produto não encontrado')
-      res.redirect('/usuarios/produtos')
-    } else {
-      // console.log(produto)
-      res.render('produtos/detalhes-produto', { produto })
-    }
-  })
-    .catch((err) => {
-      req.flash('error_msg', 'Produto não encontrado')
-      res.redirect('/usuarios/produtos')
-    })
+  const produto = await Produto.findById(id);
+
+  if (produto == null) {
+    req.flash('error_msg', 'Produto não encontrado')
+    return res.redirect('/usuarios/produtos')
+  }
+
+  if (produto.quantEstoque < 10) {
+    baixoEstoque = true
+  }
+
+  const produtos = await Produto.find({categoria: produto.categoria})
+  console.log(produtos)
+
+  if (produtos.length != 0) {
+    conteudo = true
+  }
+  
+  // console.log(baixoEstoque)
+  // console.log(conteudo)
+  res.render('produtos/detalhes-produto', { produto, produtos, conteudo, baixoEstoque })
 })
 
 
@@ -319,9 +328,9 @@ router.get('/carrinho', async (req, res, next) => {
   }
   precoTotal = req.session.precoTotal
 
-  if (req.session.totalDesconto < req.session.precoTotal){
+  if (req.session.totalDesconto < req.session.precoTotal) {
     totalDesconto = req.session.totalDesconto
-  } 
+  }
   else {
     req.session.totalDesconto = req.session.precoTotal - cart.totalPrice
     totalDesconto = req.session.totalDesconto
@@ -453,13 +462,13 @@ router.post("/faleconosco/enviar", (req, res) => {
   new Faleconosco(dadosFaleconosco).save().then(() => {
     req.flash("success_msg", "Formulario enviado e salvo no banco de dados com sucesso")
     res.redirect("/usuarios/faleconosco")
-  }).catch((err) => { 
+  }).catch((err) => {
     req.flash("error_msg", "Erro ao enviar o formulario")
     res.redirect("/usuarios/faleconosco")
   })
 
 })
-  
+
 
 
 module.exports = router

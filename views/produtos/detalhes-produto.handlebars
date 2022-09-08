@@ -1,15 +1,30 @@
-
 <section id="detalhes" class="section-p1">
     <div class="image-produto">
-        <img src="../img/Adidas1.webp" width="100%" id="Img" alt="Produto em específico">
+        <img src="../../../img/Adidas1.webp" width="100%" id="Img" alt="Produto em específico">
     </div>
 
-    {{#with produto }}
+    {{!-- {{#with produto }} --}}
     <div class="detalhes-descricao">
-        <h4>{{ nome }}</h4>
+        <h4>{{ produto.nome }}</h4>
+        <h4>Descrição do produto</h4>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, minus similique?</p>
         <strong>
-            <h2>R$ {{ preco }},00 </h2>
+            <h2>R$ {{ produto.preco }},00 </h2>
         </strong>
+
+        <div class="card-body">
+            <h4>Nome: {{ produto.nome }}</h4>
+            <h4>preco: {{ produto.preco }}</h4>
+            <h4>Categoria: {{ produto.categoria }}</h4>
+            <h4>Marca: {{ produto.marca }}</h4>
+            {{#if baixoEstoque }}
+            <h4 style="color: red;">Produto com baixo Estoque! Aproveite as últimas unidades!</h4>
+            <h4 style="color: red;">Quantidade restante: {{ produto.quantEstoque }}</h4>
+            {{else}}
+            {{/if }}
+
+            {{!-- <a href="http://localhost:8088/usuarios/carrinho">ir para o carrinho</a> --}}
+        </div>
         <select>
             <option>Select Size</option>
             <option>P</option>
@@ -17,36 +32,26 @@
             <option>G</option>
             <option>GG</option>
         </select>
-        <div class="card-body">
-            <h4>Nome: {{ nome }}</h4>
-            <h4>preco: {{ preco }}</h4>
-            <h4>Quantidade em Estoque: {{ quantEstoque }}</h4>
-            <h4>Categoria: {{ categoria }}</h4>
-            <h4>Marca: {{ marca }}</h4>
-            <form action="http://localhost:8088/usuarios/carrinho/add-carrinho/{{_id}}" method="post">
-                <button type="submit">Adicionar ao carrinho</button>
-            </form>
-            <form action="/usuarios/favoritos/add-favoritos/{{_id}}" method="post">
-                <button type="submit">Adicionar aos favoritos</button>
-            </form>
-            <a href="http://localhost:8088/usuarios/carrinho">ir para o carrinho</a>
-        </div>
-        <div class="cor">
+        <form action="http://localhost:8088/usuarios/carrinho/add-carrinho/{{produto._id}}" method="post">
+            <button type="submit">Adicionar ao carrinho</button>
+        </form>
+        <form action="/usuarios/favoritos/add-favoritos/{{produto._id}}" method="post">
+            <button type="submit">Adicionar aos favoritos</button>
+        </form>
+        {{!-- <div class="cor">
             <button style="background: red" id="botao-cor"></button>
             <button style="background: black" id="botao-cor"></button>
             <button style="background: white" id="botao-cor"></button>
             <button style="background: gray" id="botao-cor"></button>
-        </div>
-        <h4>Descrição do produto</h4>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, minus similique?</p>
-        <div class="bloco">
+        </div> --}}
+        {{!-- <div class="bloco">
             <input type="number" value="1">
             <button id="carrinho">Adicionar ao carrinho</button>
             <button class="fa fa-heart heart" id="heart"></button>
-        </div>
-        <p style="color: red;"> (Quantidade disponivel X) </p>
+        </div> --}}
+        {{!-- <p style="color: red;"> Quantidade disponivel X: </p> --}}
     </div>
-    {{/with }}
+    {{!-- {{/with }} --}}
 
 </section>
 
@@ -54,11 +59,13 @@
     <h2>Itens relacionados</h2>
     <p>Conforto e qualidade você encontra aqui!</p>
     <div class="pro-container">
-        <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
-            <img src="../img/Adidas1.webp" alt="Produto">
+        {{#if conteudo}}
+        {{#each produtos}}
+        <div class="pro" onclick="window.location.href='./{{ _id }}'">
+            <img src="../../../img/Adidas1.webp" alt="Produto">
             <div class="descricao">
-                <span>esportivo</span>
-                <h5> Adizero Boston 11 </h5>
+                <span>{{ categoria }}</span>
+                <h5> {{ nome }} </h5>
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -66,62 +73,21 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <h4>R$1.399,99</h4>
+                <h4>R$ {{ preco }}</h4>
             </div>
-            <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
-            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
+            <form action="http://localhost:8088/usuarios/carrinho/add-carrinho/{{_id}}" method="post">
+                <button type="submit">Adicionar ao carrinho</button>
+            </form>
+            <form action="/usuarios/favoritos/add-favoritos/{{_id}}" method="post">
+                <button type="submit">Adicionar aos favoritos</button>
+            </form>
+            {{!-- <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
+            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a> --}}
         </div>
-        <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
-            <img src="../img/Adidas2.webp" alt="Produto">
-            <div class="descricao">
-                <span>esportivo</span>
-                <h5>Adizero RC 4</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>R$499,99</h4>
-            </div>
-            <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
-            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
-        </div>
-        <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
-            <img src="../img/Adidas3.webp" alt="Produto">
-            <div class="descricao">
-                <span>esportivo</span>
-                <h5>Supernova+</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>R$499,99 </h4>
-            </div>
-            <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
-            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
-        </div>
-        <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
-            <img src="../img/Adidas4.webp" alt="Produto">
-            <div class="descricao">
-                <span>esportivo</span>
-                <h5>Dropset Trainer</h5>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h4>R$799,99</h4>
-            </div>
-            <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
-            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
-        </div>
+        {{/each}}
+        {{else}}
+        <p>Não encontramos itens relacionados ao produto '{{ produto.nome }}'</p>
+        {{/if}}
 
 
 </section>
