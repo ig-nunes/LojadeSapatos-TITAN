@@ -17,13 +17,13 @@
                 <h4>{{ item.preco }}</h4>
             </div>
             {{!-- <i class="fal fa-shopping-cart cart"></i> --}}
-            <form action="http://localhost:8088/usuarios/carrinho/add-carrinho/{{item._id}}" method="post">
-                <button type="submit">Adicionar ao carrinho</button>
+            <form action="http://localhost:8088/usuarios/carrinho/add-carrinho/{{_id}}" method="post">
+                <button type="submit" id="buttoon"> <i class="fal fa-shopping-cart cart"></i> </button>
             </form>
             {{!-- <a href="favoritos.html"><i class="fa fa-heart heart"></i></a> --}}
             <form action="/usuarios/favoritos/remover/{{item._id}}" method="POST">
                 <input type="hidden" name="id" value="{{item._id}}">
-                <button type="submit" class="btn btn-danger">Remover favoritos</button>
+                <button type="submit" id="buttoon"> <i class="bi bi-x-lg"></i> </button>
             </form>
         </div>
         {{/each }}

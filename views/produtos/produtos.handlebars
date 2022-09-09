@@ -20,14 +20,12 @@
                 <h4>R$ {{ preco }},00</h4>
             </div>
             <form action="http://localhost:8088/usuarios/carrinho/add-carrinho/{{_id}}" method="post">
-                <button type="submit">Adicionar ao carrinho</button>
+                <button type="submit" id="buttoon"> <i class="fal fa-shopping-cart cart"></i> </button>
             </form>
             <form action="/usuarios/favoritos/add-favoritos/{{_id}}" method="post">
-                <button type="submit">Adicionar aos favoritos</button>
+                <button type="submit" id="buttoon"> <i class="fa fa-heart heart"></i> </button>
             </form>
 
-            {{!-- <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
-            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a> --}}
 
         </div>
         {{/each }}

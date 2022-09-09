@@ -167,6 +167,7 @@
     position: absolute;
     bottom: 20px;
     right: 20px;
+    align-items: center;
 
 }
 
@@ -178,7 +179,22 @@
     background-color: #fde3cd;
     font-weight: 500;
     color: red;
-    border: 1px solid #cce7d0;
+    border: 1px solid #f09d9d;
+    position: absolute;
+    bottom: 20px;
+    right: 70px;
+
+}
+
+#product1 .pro .bi-x-lg {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50px;
+    background-color: #fde3cd;
+    font-weight: 500;
+    color: red;
+    border: 1px solid #f09d9d;
     position: absolute;
     bottom: 20px;
     right: 70px;
