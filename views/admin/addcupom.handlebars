@@ -3,15 +3,16 @@
 {{else}}
 
 {{/each}}
-<h3>Novo cupom:</h3>
-<section class="area-login">
-  <div class="login">
+<section class="area-login-admin">
+
+  <div class="login-admin">
+      <h2>Novo cupom</h2>
   <form action="/admin/cupons/novo" method="POST">
     <label for="nome">Nome</label>
-    <input class="form-control" type="text" id="nome" name="nome" placeholder="nome do cupom">
+    <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome do cupom">
 
     <label for="desconto">Desconto</label>
-    <input class="form-control" type="number" step="any" name="desconto" id="desconto" placeholder="desconto do cupom">
+    <input class="form-control" type="number" step="any" name="desconto" id="desconto" placeholder="Desconto do cupom">
 
     <br>
     <button class="btn btn-info">Criar cupom</button>
