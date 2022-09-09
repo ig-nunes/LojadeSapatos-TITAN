@@ -32,7 +32,7 @@
                 <td> {{ item.nome }} </td>
                 <td>R$ {{ item.preco }},00</td>
                 <td> {{ quantity }} </td>
-                <td> {{ price }} </td>
+                <td>R$ {{ price }},00 </td>
             </tr>
             {{/each }}
         </tbody>
@@ -58,19 +58,19 @@
             <tr>
                 <td>Subtoltal</td>
                 
-                <td>{{ precoTotal }}</td>
+                <td>R${{ precoTotal }}</td>
                 
             </tr>
             <tr>
             
                 <td>Desconto</td>
-                <td>{{ totalDesconto }}</td>
+                <td>R$ {{ totalDesconto }}</td>
                 
             </tr>
             <tr>
                 <td><strong>Total</strong></td>
                 {{#with cart}}
-                <td><strong>${{ totalPrice }}</strong></td>
+                <td><strong>R$ {{ totalPrice }}</strong></td>
                 {{/with}}
             </tr>
         </table>
