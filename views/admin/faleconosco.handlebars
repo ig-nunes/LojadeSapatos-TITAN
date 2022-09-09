@@ -1,19 +1,19 @@
 
-<h2>Sugestoes:</h2>
+<h2>Sugestões:</h2>
 <hr>
 
 {{#each faleConosco}}
 <div class="card">
     <div class="card-body">
-        <h4>Usuario: {{name}}</h4>
+        <h4>Usuário: {{name}}</h4>
         <h4>Email: {{email}}</h4>
-        <h4>Seguestao: {{text}}</h4>
+        <h4>Seguestão: {{text}}</h4>
     </div>
     <form action="/admin/faleconosco/deletar/{{_id}}" method="POST">
                     <input type="hidden" name="id" value="{{_id}}">
-                    <button type="submit" class="btn btn-danger">Deletar sugestao</button>
+                    <button type="submit" class="btn btn-danger">Deletar sugestão</button>
                 </form>
 </div>
 {{else}}
-<h4>Nenhuma sugestao recebida</h4>
+<h4>Nenhuma sugestão recebida</h4>
 {{/each}}

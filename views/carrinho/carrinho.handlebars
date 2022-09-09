@@ -19,13 +19,13 @@
                 {{!-- <td> <a href="#"> <i class="far fa-times-circle"></i></a></td> --}}
                 <td>
                     <form action="http://localhost:8088/usuarios/carrinho/add-mais-carrinho/{{item._id}}" method="post">
-                        <button>Adicionar</button>
+                   <button class="bi bi-plus" id="bi-plus"></button>
                     </form>
                 </td>
                 <td>
                     <form action="http://localhost:8088/usuarios/carrinho/remover/{{ item._id }}" method="post">
                         {{!-- <input type="hidden" name="id" value="{{ item._id }}"> --}}
-                        <button type="submit">Remover</button>
+                   <button class="bi bi-x-lg" id="bi-x-lg"></button>
                     </form>
                 </td>
                 <td><img src="../img/Adidas1.webp" alt=""></td>
@@ -43,13 +43,12 @@
     <div id="cupom">
         <h3><strong>Aplique o cupom</strong></h3>
         <div>
-            <form action="http://localhost:8088/usuarios/carrinho" method="get">
+            <form action="http://localhost:8088/usuarios/carrinho" method="get" id="form-cupom">
                 <label hidden for="cupom">Cupom de desconto</label>
-                <input type="text" name="cupom" id="cupom" placeholder="insira seu cupom de desconto">
+                <input type="text" name="cupom" id="cupom" placeholder="Insira seu cupom de desconto">
                 <button type="submit" id="botaofinal">Aplicar</button>
             </form>
-            {{!-- <input type="text" placeholder="Insira seu cupom de desconto">
-            <button id="botaofinal">Aplicar</button> --}}
+
         </div>
     </div>
 

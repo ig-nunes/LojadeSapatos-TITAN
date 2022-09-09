@@ -9,6 +9,32 @@ h2 {
     display: flex;
     justify-content: center;
 }
+#cart #bi-x-lg {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50px;
+    background-color: #fde3cd;
+    font-weight: 500;
+    color: red;
+    border: 1px solid #f09d9d;
+    position: absolute;
+    bottom: 130px;
+}
+
+#cart #bi-plus {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50px;
+    background-color: #cce7d0;
+    font-weight: 500;
+    color: #088178;
+    border: 1px solid #088178;
+    position: absolute;
+    bottom: 130px;
+}
+
 
 #cart table {
     width: 90%;
@@ -80,7 +106,6 @@ h2 {
 
 #cupom {
     margin: 10px;
-    margin-left: 50px;
 }
 
 #cupom h3 {
@@ -107,7 +132,13 @@ h2 {
     background-color: #088178;
     color: #FFFFFF;
     border: none;
+    margin-top: 10px;
     border-radius: 5px;
+    align-items: center;
+}
+
+#form-cupom{
+    display: flex;
 }
 
 #finalizar-compra {

@@ -6,52 +6,39 @@
     {{!-- {{#with produto }} --}}
     <div class="detalhes-descricao">
         <h4>{{ produto.nome }}</h4>
-        <h4>Descrição do produto</h4>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam, minus similique?</p>
         <strong>
             <h2>R$ {{ produto.preco }},00 </h2>
         </strong>
-
-        <div class="card-body">
-            <h4>Nome: {{ produto.nome }}</h4>
-            <h4>preco: {{ produto.preco }}</h4>
+        <br>
             <h4>Categoria: {{ produto.categoria }}</h4>
             <h4>Marca: {{ produto.marca }}</h4>
+            <select>
+            <option>Select Size</option>
+            <option>40</option>
+            <option>42</option>
+            <option>44</option>
+            <option>46</option>
+            </select>
+                <div class="bloco">
+            <form action="http://localhost:8088/usuarios/carrinho/add-carrinho/{{produto._id}}" method="post">
+                <button type="submit" id="carrinho">Adicionar ao carrinho</button>
+            </form>
+            <form action="/usuarios/favoritos/add-favoritos/{{produto._id}}" method="post">
+                <button type="submit" id="heart" class="bi bi-suit-heart"></button>
+            </form>
+            </div>
+            <br>
             {{#if baixoEstoque }}
-            <h4 style="color: red;">Produto com baixo Estoque! Aproveite as últimas unidades!</h4>
+            <h4 style="color: red;">Produto com baixo estoque! Aproveite as últimas unidades!</h4>
             <h4 style="color: red;">Quantidade restante: {{ produto.quantEstoque }}</h4>
             {{else}}
             {{/if }}
 
-            {{!-- <a href="http://localhost:8088/usuarios/carrinho">ir para o carrinho</a> --}}
         </div>
-        <select>
-            <option>Select Size</option>
-            <option>P</option>
-            <option>M</option>
-            <option>G</option>
-            <option>GG</option>
-        </select>
-        <form action="http://localhost:8088/usuarios/carrinho/add-carrinho/{{produto._id}}" method="post">
-            <button type="submit">Adicionar ao carrinho</button>
-        </form>
-        <form action="/usuarios/favoritos/add-favoritos/{{produto._id}}" method="post">
-            <button type="submit">Adicionar aos favoritos</button>
-        </form>
-        {{!-- <div class="cor">
-            <button style="background: red" id="botao-cor"></button>
-            <button style="background: black" id="botao-cor"></button>
-            <button style="background: white" id="botao-cor"></button>
-            <button style="background: gray" id="botao-cor"></button>
-        </div> --}}
-        {{!-- <div class="bloco">
-            <input type="number" value="1">
-            <button id="carrinho">Adicionar ao carrinho</button>
-            <button class="fa fa-heart heart" id="heart"></button>
-        </div> --}}
-        {{!-- <p style="color: red;"> Quantidade disponivel X: </p> --}}
+
+
     </div>
-    {{!-- {{/with }} --}}
+
 
 </section>
 
@@ -75,14 +62,14 @@
                 </div>
                 <h4>R$ {{ preco }}</h4>
             </div>
+
             <form action="http://localhost:8088/usuarios/carrinho/add-carrinho/{{_id}}" method="post">
-                <button type="submit">Adicionar ao carrinho</button>
+                <button type="submit" id="buttoon" class="fal fa-shopping-cart cart"></button>
             </form>
             <form action="/usuarios/favoritos/add-favoritos/{{_id}}" method="post">
-                <button type="submit">Adicionar aos favoritos</button>
+                <button type="submit" id="buttoon" class="fa fa-heart heart"></button>
             </form>
-            {{!-- <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
-            <a href="favoritos.html"><i class="fa fa-heart heart"></i></a> --}}
+
         </div>
         {{/each}}
         {{else}}
