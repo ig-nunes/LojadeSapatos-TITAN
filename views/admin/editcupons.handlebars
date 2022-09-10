@@ -4,21 +4,25 @@
 
 {{/each}}
 
-<h3>Editar Cupom:</h3>
-<div class="card">
-    <div class="card-body"></div>
-    {{#with cupom}}
-    <form action="/admin/cupons/edit" method="POST">
-        <input type="hidden" name="id" value="{{ _id }}">
-        <label for="nome">Nome</label>
-        <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome do cupom" value="{{ nome }}">
+<div class="d-flex flex-column align-items-center justify-content-center">
+    <h3>Editar Cupom:</h3>
+    <div class="admin-container">
+        <div class="admin">
+            {{#with cupom}}
+            <form action="/admin/cupons/edit" method="POST">
+                <input type="hidden" name="id" value="{{ _id }}">
+                <label for="nome">Nome</label>
+                <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome do cupom"
+                    value="{{ nome }}">
 
-        <label for="slug">Desconto</label>
-        <input class="form-control" type="number" step="any" name="desconto" id="desconto" placeholder="Desconto do cupom"
-            value="{{ desconto }}">
+                <label for="slug">Desconto</label>
+                <input class="form-control" type="number" step="any" name="desconto" id="desconto"
+                    placeholder="Desconto do cupom" value="{{ desconto }}">
 
-        <br>
-        <button type="submit" class="btn btn-info"> Editar produto</button>
-    </form>
-    {{/with}}
+                <br>
+                <button type="submit" class="btn btn-info"> Editar produto</button>
+            </form>
+            {{/with}}
+        </div>
+    </div>
 </div>

@@ -18,8 +18,8 @@ h2 {
     font-weight: 500;
     color: red;
     border: 1px solid #f09d9d;
-    position: absolute;
-    bottom: 130px;
+    /* position: absolute;
+    bottom: 130px; */
 }
 
 #cart #bi-plus {
@@ -31,8 +31,8 @@ h2 {
     font-weight: 500;
     color: #088178;
     border: 1px solid #088178;
-    position: absolute;
-    bottom: 130px;
+    /* position: absolute;
+    bottom: 130px; */
 }
 
 
@@ -49,7 +49,7 @@ h2 {
 }
 
 #cart table td :nth-child(1) {
-    width: 100px;
+    /* width: 100px; */
     text-align: center;
 }
 
@@ -90,14 +90,22 @@ h2 {
 
 #cart table thead td {
     font-weight: 700;
-    font-size: 15px;
+    font-size: 16px;
     padding: 18px 0;
     text-align: center;
 }
 
+/* #cart table tbody tr {
+    display: flex;
+    justify-content: center;
+} */
+
 #cart table tbody tr td {
+    justify-content: center;
     padding-top: 15px;
     text-align: center;
+    font-size: 13px;
+    font-weight: 700;
 }
 
 #cart table tbody td {

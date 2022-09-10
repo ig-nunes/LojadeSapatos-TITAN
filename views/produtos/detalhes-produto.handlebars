@@ -1,17 +1,16 @@
 <section id="detalhes" class="section-p1">
     <div class="image-produto">
-        <img src="../../../img/Adidas1.webp" width="100%" id="Img" alt="Produto em específico">
+        <img src="{{produto.imageUrl }}" width="100%" id="Img" alt="Produto em específico">
     </div>
 
     {{!-- {{#with produto }} --}}
     <div class="detalhes-descricao">
-        <h4>{{ produto.nome }}</h4>
-        <strong>
+
+        <h4><strong>{{ produto.nome }}</strong></h4>
             <h2>R$ {{ produto.preco }},00 </h2>
-        </strong>
         <br>
-            <h4>Categoria: {{ produto.categoria }}</h4>
-            <h4>Marca: {{ produto.marca }}</h4>
+            <h5>Categoria: {{ produto.categoria }}</h5>
+            <h5>Marca: {{ produto.marca }}</h5>
             <select>
             <option>Select Size</option>
             <option>40</option>
@@ -29,8 +28,8 @@
             </div>
             <br>
             {{#if baixoEstoque }}
-            <h4 style="color: red;">Produto com baixo estoque! Aproveite as últimas unidades!</h4>
-            <h4 style="color: red;">Quantidade restante: {{ produto.quantEstoque }}</h4>
+            <h5 style="color: red;">Produto com baixo estoque! Aproveite as últimas unidades!</h5>
+            <h5 style="color: red;">Quantidade restante: {{ produto.quantEstoque }}</h5>
             {{else}}
             {{/if }}
 
@@ -49,7 +48,7 @@
         {{#if conteudo}}
         {{#each produtos}}
         <div class="pro" onclick="window.location.href='./{{ _id }}'">
-            <img src="../../../img/Adidas1.webp" alt="Produto">
+            <img src="{{imageUrl}}" alt="Produto">
             <div class="descricao">
                 <span>{{ categoria }}</span>
                 <h5> {{ nome }} </h5>

@@ -16,7 +16,8 @@
     padding: 35px;
     border-radius: 8px;
 }
-.login form{
+
+.login form {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -25,6 +26,16 @@
     margin-top: 10px;
     border: none;
     height: 45px;
+    outline: none;
+    border-radius: 8px;
+    padding-left: 10px;
+
+}
+
+.login textarea{
+    margin-top: 10px;
+    border: none;
+    height: 60px;
     outline: none;
     border-radius: 8px;
     padding-left: 10px;
@@ -45,7 +56,6 @@ form [type="submit"]{
 a{
     text-decoration: none;
 }
-
 /* Página recuperar a senha */
 .recuperar{
     display: flex;
@@ -107,7 +117,4 @@ a{
     height: auto;
     /* margin-left: 500px; */
     margin-top: 12px;
-}
-.container h2{
-    /* margin-left: 400px */
 }

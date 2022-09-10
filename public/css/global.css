@@ -52,6 +52,15 @@ body {
   align-items: center;
 }
 
+.navbar-toggler {
+  background-color: #5a8dcc;
+  margin-right: 100px;
+}
+
+.navbar-nav {
+  align-items: center;
+}
+
 #butoon {
   border-radius: 50px;
   outline: none;

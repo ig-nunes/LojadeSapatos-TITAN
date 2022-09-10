@@ -9,7 +9,6 @@
 .produtos {
     display: flex;
     justify-content: center;
-
     /* background-color: #D5E2F2; */
 }
 
@@ -51,6 +50,7 @@
 
 
 /* ------------- PROPAGANDA ------------- */
+
 .propaganda {
     display: flex;
     flex-direction: column;
@@ -94,7 +94,7 @@
 
 
 .section-p1 {
-    padding: 100px 150px;
+    padding: 40px 150px 150px 150px;
 }
 
 #product1 {

@@ -3,8 +3,8 @@
 <hr>
 
 {{#each produtos}}
-<div class="card">
-    <div class="card-body">
+<div class="admin-container">
+    <div class="admin">
         <h4>Nome: {{ item.nome }}</h4>
         <h4>preco: {{ item.preco }}</h4>
         <h4>Categoria: {{ item.categoria }}</h4>
@@ -24,6 +24,6 @@
 {{/each}}
 
 
-<a href="http://localhost:8088/admin/produtos"><button class="btn btn-info m-4">voltar para produtos</button></a>
-<a href="http://localhost:8088/admin/carrinho"><button class="btn btn-info m-4">ir para o carrinho</button></a>
-<a href="http://localhost:8088/admin/cupons"><button class="btn btn-info m-4">ir para os cupons</button></a>
+<a href="http://localhost:8088/admin/produtos"><button class="btn btn-info m-4">Voltar para produtos</button></a>
+<a href="http://localhost:8088/admin/carrinho"><button class="btn btn-info m-4">Ir para o carrinho</button></a>
+<a href="http://localhost:8088/admin/cupons"><button class="btn btn-info m-4">Ir para os cupons</button></a>

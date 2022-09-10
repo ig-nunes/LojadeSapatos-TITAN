@@ -3,18 +3,20 @@
 {{else}}
 
 {{/each}}
-<h3>Novo produto:</h3>
-<div class="card">
-  <div class="card-body"></div>
+
+<div class="area-login-admin-produto"> 
+   <div class="login-admin-produto">
+    <h2>Novo Produto</h2>
   <form action="/admin/produtos/novo" method="post" enctype="multipart/form-data">
     <label for="nome">Nome</label>
-    <input class="form-control" type="text" id="nome" name="nome" placeholder="nome do produto" required>
+    <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome do produto" required>
 
     <label for="preco">Preço</label>
-    <input class="form-control" type="number" step="any" name="preco" id="preco" placeholder="preço do produto" required>
+    <input class="form-control" type="number" step="any" name="preco" id="preco" placeholder="Preço do produto" required>
     
-    <label for="preco">Imagem</label>
+    <label for="image">Imagem</label>
     <input class="form-control" type="file" name="image" id="image" required>
+
 
     <label for="quantEstoque">Quantidade</label>
     <input class="form-control" type="number" name="quantEstoque" id="quantEstoque" placeholder="Quantidade que deseja adicionar" required>
@@ -36,5 +38,5 @@
     <br>
     <button class="btn btn-info">Criar produto</button>
   </form>
-
+</div>
 </div>

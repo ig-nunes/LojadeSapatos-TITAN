@@ -3,45 +3,48 @@
 {{else}}
 
 {{/each}}
-<h3>Editar produto:</h3>
-<div class="card">
-  <div class="card-body"></div>
-  <form action="/admin/produtos/edit" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id" value="{{produto._id}}">
-    <label for="nome">Nome</label>
-    <input class="form-control" type="text" id="nome" name="nome" placeholder="nome do produto"
-      value="{{ produto.nome }}" required>
+<div class="area-login-admin-produto">
+  <div class="login-admin-produto">
+    <h2>Editar produto:</h3>
+    {{!-- <div class="card"> --}}
+      {{!-- <div class="card-body"> --}}
+        <form action="/admin/produtos/edit" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id" value="{{produto._id}}">
+          <label for="nome">Nome</label>
+          <input class="form-control" type="text" id="nome" name="nome" placeholder="nome do produto"
+            value="{{ produto.nome }}" required>
 
-    <label for="preco">Preço</label>
-    <input class="form-control" type="number" step="any" name="preco" id="preco" placeholder="preco do produto"
-      value="{{ produto.preco }}" required>
+          <label for="preco">Preço</label>
+          <input class="form-control" type="number" step="any" name="preco" id="preco" placeholder="preco do produto"
+            value="{{ produto.preco }}" required>
 
-    <label for="imagemCadastrada">Imagem cadastrada previamente</label>
-    <img src="{{ produto.imageUrl }}" id="imagemCadastrada" class="img-thumbnail" style="width: 100px; height: auto;" alt="">
+          <label for="imagemCadastrada">Imagem cadastrada previamente</label>
+          <img src="{{ produto.imageUrl }}" id="imagemCadastrada" class="img-thumbnail"
+            style="width: 100px; height: auto;" alt="">
 
-    <label for="image"></label>
-    <input class="form-control" type="file" name="image" id="image" required>
+          <label for="image"></label>
+          <input class="form-control" type="file" name="image" id="image" required>
 
-    <label for="quantEstoque">Quantidade</label>
-    <input class="form-control" type="number" name="quantEstoque" id="quantEstoque"
-      placeholder="Quantidade que deseja adicionar" value="{{ produto.quantEstoque }}" required>
+          <label for="quantEstoque">Quantidade</label>
+          <input class="form-control" type="number" name="quantEstoque" id="quantEstoque"
+            placeholder="Quantidade que deseja adicionar" value="{{ produto.quantEstoque }}" required>
 
-    <label for="categoria">Selecione a categoria</label>
-    <select name="categoria" id="categoria" required>
-      {{#each categorias}}
-      <option value="{{this}}">{{this}}</option>
-      {{/each}}
-    </select>
+          <label for="categoria">Selecione a categoria</label>
+          <select name="categoria" id="categoria" required>
+            {{#each categorias}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          </select>
 
-    <label for="marca">Selecione a marca</label>
-    <select name="marca" id="marca" required>
-      {{#each marcas}}
-      <option value="{{this}}">{{this}}</option>
-      {{/each}}
-    </select>
+          <label for="marca">Selecione a marca</label>
+          <select name="marca" id="marca" required>
+            {{#each marcas}}
+            <option value="{{this}}">{{this}}</option>
+            {{/each}}
+          </select>
 
-    <br>
-    <button type="submit" class="btn btn-info"> Editar produto</button>
-  </form>
-
-</div>
+          <br>
+          <button type="submit" class="btn btn-info"> Editar produto</button>
+        </form>
+      </div>
+    </div>
