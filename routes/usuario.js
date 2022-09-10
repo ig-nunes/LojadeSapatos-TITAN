@@ -452,7 +452,7 @@ router.post('/favoritos/remover/:id', eUsuario, (req, res) => {
 
 
 // FALE CONOSCO
-router.get("/faleconosco", (req, res) => {
+router.get("/faleconosco",eUsuario, (req, res) => {
   res.render("faleconosco/faleconosco")
 })
 
