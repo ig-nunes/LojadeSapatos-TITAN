@@ -2,3 +2,6 @@
 
 # Dependencies
 /node_modules
+
+# Secrets from cloudinary
+.env

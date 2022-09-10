@@ -10,16 +10,24 @@ const Favorito = require('../models/Favorito')
 const { eAdmin } = require("../helpers/eAdmin")
 require('../models/Faleconosco')
 const Faleconosco = mongoose.model("faleConosco")
-
-
+const multer = require('multer')
+const { storage } = require('../cloudinary')
+const upload = multer({ storage })
+const { cloudinary } = require('../cloudinary')
 
 const categorias = ['casual', 'esportivo', 'infantil']
 const marcas = ['adidas', 'puma', 'nike']
 
 
+
+
 //http://localhost:8088/admin
 // pegando o view/admim/index
-router.get('/',eAdmin,(req,res) => {
+router.get('/', eAdmin, async (req, res) => {
+  const produtos = await Produto.find();
+  console.log("index do admin")
+
+
   if (req.query) {
     const { busca } = req.query
 
@@ -44,7 +52,7 @@ router.get('/',eAdmin,(req,res) => {
 
 
 
-  res.render('admin/index')
+  res.render('admin/index', { produtos })
 })
 
 
@@ -52,7 +60,7 @@ router.get('/',eAdmin,(req,res) => {
 //   CUPONS:
 
 // http://localhost:8088/admin/cupons
-router.get('/cupons',eAdmin, (req, res) => {
+router.get('/cupons', eAdmin, (req, res) => {
   Cupom.find({}).then((cupons) => {
     res.render('admin/cupons', { cupons })
   })
@@ -63,7 +71,7 @@ router.get('/cupons',eAdmin, (req, res) => {
 })
 
 //http://localhost:8088/admin/cupons/buscar/:id
-router.get('/cupons/buscar/:id',eAdmin, (req, res) => {
+router.get('/cupons/buscar/:id', eAdmin, (req, res) => {
   const { id } = req.params
   Cupom.findById(id).then((cupom) => {
     if (cupom === null) {
@@ -81,12 +89,12 @@ router.get('/cupons/buscar/:id',eAdmin, (req, res) => {
 
 
 // http://localhost:8088/admin/cupons/add
-router.get('/cupons/add',eAdmin, (req, res) => {
+router.get('/cupons/add', eAdmin, (req, res) => {
   res.render('admin/addcupom')
 })
 
 //http://localhost:8088/admin/cupons/novo
-router.post('/cupons/novo',eAdmin, (req, res) => {
+router.post('/cupons/novo', eAdmin, (req, res) => {
   var erros = [] // validacao para evitar erros do usuario
 
   if (!req.body.nome || typeof req.body.nome == undefined || req.body.nome == null) {
@@ -126,7 +134,7 @@ router.post('/cupons/novo',eAdmin, (req, res) => {
 })
 
 //http://localhost:8088/admin/cupons/edit/:id
-router.get('/cupons/edit/:id',eAdmin, (req, res) => {
+router.get('/cupons/edit/:id', eAdmin, (req, res) => {
   const { id } = req.params
   Cupom.findById(id).then((cupom) => {
     res.render('admin/editcupons', { cupom: cupom })
@@ -137,7 +145,7 @@ router.get('/cupons/edit/:id',eAdmin, (req, res) => {
 })
 
 //http://localhost:8088/admin/cupons/edit
-router.post('/cupons/edit',eAdmin, (req, res) => {
+router.post('/cupons/edit', eAdmin, (req, res) => {
   Cupom.findOne({ _id: req.body.id }).then((cupom) => {
 
     cupom.nome = req.body.nome
@@ -158,7 +166,7 @@ router.post('/cupons/edit',eAdmin, (req, res) => {
 })
 
 //http://localhost:8088/admin/cupons/deletar
-router.post("/cupons/deletar",eAdmin, (req, res) => {
+router.post("/cupons/deletar", eAdmin, (req, res) => {
   Cupom.findByIdAndDelete({ _id: req.body.id }).then(() => {
     req.flash('sucess_msg', 'Cupom deletado com sucesso!')
     res.redirect('/admin/cupons')
@@ -174,7 +182,7 @@ router.post("/cupons/deletar",eAdmin, (req, res) => {
 //  PRODUTOS:
 
 //http://localhost:8088/admin/produtos
-router.get('/produtos', (req, res) => {
+router.get('/produtos', eAdmin, (req, res) => {
   Produto.find({}).then((produtos) => {
     res.render('admin/produtos', { produtos })
   }).catch((err) => {
@@ -184,8 +192,8 @@ router.get('/produtos', (req, res) => {
 })
 
 //http://localhost:8088/admin/produtos/buscar/:id
-router.get('/produtos/buscar/:id', (req, res) => {
-  const {id} = req.params
+router.get('/produtos/buscar/:id', eAdmin, (req, res) => {
+  const { id } = req.params
   Produto.findById(id).then((produto) => {
     if (produto === null) {
       req.flash('error_msg', 'Produto não encontrado')
@@ -202,13 +210,13 @@ router.get('/produtos/buscar/:id', (req, res) => {
 
 
 //http://localhost:8088/admin/produtos/add
-router.get('/produtos/add', (req, res) => {
+router.get('/produtos/add', eAdmin, (req, res) => {
   res.render('admin/addprodutos', { categorias, marcas })
 })
 
 
 //http://localhost:8088/admin/produtos/novo
-router.post('/produtos/novo', (req, res) => {
+router.post('/produtos/novo', upload.single('image'), (req, res, next) => {
   var erros = [] //validacao para evitar erros do usuario
 
   if (!req.body.nome || typeof req.body.nome == undefined || req.body.nome == null) {
@@ -230,11 +238,14 @@ router.post('/produtos/novo', (req, res) => {
       nome: req.body.nome,
       preco: req.body.preco,
       quantEstoque: req.body.quantEstoque,
+      imageUrl: req.file.path,
+      imageFileName: req.file.filename,  //image: { url: req.file.path, filename: req.file.filename },  // req.files.map( f => ({url: f.path, filename: f.filename})),   // adicionando imagens
       categoria: req.body.categoria,
-      marca: req.body.marca
+      marca: req.body.marca,
     }
 
     new Produto(novoProduto).save().then(() => {
+      console.log(novoProduto)
       req.flash('sucess_msg', 'Produto criado com sucesso!')
       res.redirect('/admin/produtos')
       console.log('Produto salvo com sucesso')
@@ -244,10 +255,12 @@ router.post('/produtos/novo', (req, res) => {
       console.log('ERRO AO SALVAR PRODUTO!')
     })
   }
+  // console.log(req.body, req.file)
+  // res.send('it worked!')
 })
 
 //http://localhost:8088/admin/produtos/edit/:id
-router.get('/produtos/edit/:id', (req, res) => {
+router.get('/produtos/edit/:id', eAdmin, (req, res) => {
   const { id } = req.params
   Produto.findById(id).then((produto) => {
     res.render('admin/editprodutos', { produto: produto, categorias, marcas })
@@ -258,14 +271,27 @@ router.get('/produtos/edit/:id', (req, res) => {
 })
 
 //http://localhost:8088/admin/produtos/edit
-router.post('/produtos/edit', (req, res) => {
+router.post('/produtos/edit', upload.single('image'), (req, res) => {
   Produto.findOne({ _id: req.body.id }).then((produto) => {
+
+    // console.log(produto)
+    cloudinary.uploader.destroy(produto.imageFileName)
+      .then(result => {
+        console.log(result)
+      })
+      .catch(err => console.log(err))
+
+    // console.log('------------------------')
 
     produto.nome = req.body.nome
     produto.preco = req.body.preco
     produto.quantEstoque = req.body.quantEstoque
+    produto.imageUrl = req.file.path
+    produto.imageFileName = req.file.filename
     produto.categoria = req.body.categoria
     produto.marca = req.body.marca
+
+    // console.log(produto)
 
     produto.save().then(() => {
       req.flash('success_msg', 'Produto editado com sucesso!')
@@ -274,7 +300,6 @@ router.post('/produtos/edit', (req, res) => {
       req.flash('error_msg', 'Houve um erro interno ao salvar a edicao do produto')
       res.redirect('/admin/produtos')
     })
-
   }).catch((err) => {
     req.flash('error_msg', 'Houve um erro ao editar o produto')
     res.redirect('/admin/produtos')
@@ -282,8 +307,16 @@ router.post('/produtos/edit', (req, res) => {
 })
 
 
+// http://localhost:8088/admin/produtos/deletar
 router.post("/produtos/deletar", (req, res) => {
-  Produto.findByIdAndDelete({ _id: req.body.id }).then(() => {
+  Produto.findByIdAndDelete({ _id: req.body.id }).then((produtoDeletado) => {
+    // console.log(produtoDeletado)
+    cloudinary.uploader.destroy(produtoDeletado.imageFileName)
+      .then(result => {
+        console.log(result)
+      })
+      .catch(err => console.log(err))
+
     req.flash('sucess_msg', 'Produto deletado com sucesso!')
     res.redirect('/admin/produtos')
   }).catch((err) => {
@@ -334,8 +367,8 @@ router.get('/carrinho', async (req, res, next) => {
   }
 
   var cart = new Carrinho(req.session.cart);
-  
-  if (cart.totalPrice >= desconto){
+
+  if (cart.totalPrice >= desconto) {
     cart.totalPrice = cart.totalPrice - desconto;
     req.session.cart.totalPrice = cart.totalPrice;
   } else {
@@ -358,7 +391,6 @@ router.get('/carrinho', async (req, res, next) => {
   }
 
   res.render('admin/carrinho', { produtos: cart.getItems(), array, cart });
-
 });
 
 // http://localhosto:8088/admin/carrinho/remover/:id
@@ -391,11 +423,11 @@ router.post('/carrinho/finalizar-compra', async (req, res, next) => {
       const item = await Produto.findById(produto[0]);
       const estoque = item.quantEstoque
 
-      try{
-        await Produto.findByIdAndUpdate(produto[0], {quantEstoque: estoque - Number(produto[1])}, {runValidators: true})
+      try {
+        await Produto.findByIdAndUpdate(produto[0], { quantEstoque: estoque - Number(produto[1]) }, { runValidators: true })
         req.session.cart = {}
         console.log(req.session.cart)
-      } catch(err) {
+      } catch (err) {
         // throw new Error(`Quantidade em estoque do produto ${item.nome} menor que a quantidade pedida!`)
         req.flash("error_msg", `Estoque insuficiente para o pedido sobre o item "${item.nome}". 
         Quantidade Pedida: ${Number(produto[1])}; 
@@ -403,13 +435,10 @@ router.post('/carrinho/finalizar-compra', async (req, res, next) => {
         `)
       }
     }
-    
+
     res.redirect('/admin/produtos');
   }
 })
-
-
-
 
 
 
@@ -440,7 +469,7 @@ router.get('/favoritos', async (req, res, next) => {
 
   var favorito = new Favorito(req.session.favorito);
   // console.log(favorito);
-  console.log(req.session.favorito)  
+  console.log(req.session.favorito)
 
   res.render('admin/favorito', { produtos: favorito.getItems() });
 
@@ -460,22 +489,22 @@ router.post('/favoritos/remover/:id', (req, res) => {
 
 
 //FALE CONOSCO
-router.get("/faleconosco",eAdmin, (req, res) => {
-  Faleconosco.find().lean().then((faleConosco) => { 
-    res.render("admin/faleconosco", {faleConosco: faleConosco})
-  }).catch((err) => { 
-    req.flash("error_msg","Houve um erro ao carregar os fomularios ")
+router.get("/faleconosco", eAdmin, (req, res) => {
+  Faleconosco.find().lean().then((faleConosco) => {
+    res.render("admin/faleconosco", { faleConosco: faleConosco })
+  }).catch((err) => {
+    req.flash("error_msg", "Houve um erro ao carregar os fomularios ")
     res.redirect("admin/faleconosco")
   })
-  
+
 })
 
 router.post('/faleconosco/deletar/:id', (req, res) => {
-  Faleconosco.deleteOne({_id: req.body.id}).then(() => { 
-    req.flash("success_msg","Formulario deletado com sucesso")
+  Faleconosco.deleteOne({ _id: req.body.id }).then(() => {
+    req.flash("success_msg", "Formulario deletado com sucesso")
     res.redirect("/admin/faleconosco")
-  }).catch((err) => { 
-    req.flash("error_msg","Houve um erro ao deletar o fomulario")
+  }).catch((err) => {
+    req.flash("error_msg", "Houve um erro ao deletar o fomulario")
     res.redirect("/admin/faleconosco")
   })
 });

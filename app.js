@@ -1,3 +1,8 @@
+if (process.env.NODE_ENV !== "production") {
+  require('dotenv').config();
+}
+
+
 //Carregando modulos
 const express = require('express')
 const session = require('express-session')
@@ -11,25 +16,27 @@ const flash = require('connect-flash')
 const usuarios = require("./routes/usuario")
 const passport = require("passport")
 require("./config/auth")(passport)
+require('./models/Produto')
+const Produto = mongoose.model('produtos')
 
 //Configuracoes
 
 // Sessao *app.use serve para criacao e configuracao de middleware*
-      app.use(session({
-        secret: 'TITAN',
-        resave: true,
-        saveUninitialized: true
-      }))
-      app.use(flash())
-      app.use(passport.session())
-      app.use(flash())
+app.use(session({
+  secret: 'TITAN',
+  resave: true,
+  saveUninitialized: true
+}))
+app.use(flash())
+app.use(passport.session())
+app.use(flash())
 //Middleware  
 app.use((req, res, next) => {
-      res.locals.success_msg = req.flash("success_msg") //*criando variaveis globais atraves do locals para serem acessadas em qualquer pasta*
-      res.locals.error_msg = req.flash("error_msg")
-      res.locals.error = req.flash("error")
-      res.locals.user = req.user || null
-      next()
+  res.locals.success_msg = req.flash("success_msg") //*criando variaveis globais atraves do locals para serem acessadas em qualquer pasta*
+  res.locals.error_msg = req.flash("error_msg")
+  res.locals.error = req.flash("error")
+  res.locals.user = req.user || null
+  next()
 })
 //Body Parser
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -44,7 +51,7 @@ app.set('view engine', 'handlebars')
 
 //Mongoose
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost/teste").then(() => {
+mongoose.connect("mongodb://localhost/teste2").then(() => {
   console.log("Conectado ao Mongo")
 }).catch((err) => {
   console.log("ERRO AO SE CONECTAR AO MONGO, VERIFIQUE SE ESTA INSTALAR!")
@@ -59,8 +66,34 @@ app.use((req, res, next) => {
 
 //Rotas
 //rotas independentes da pasta "routes"
-app.get('/', (req, res) => {
-  res.render('index/index') //acessando a pasta para abrir o arquivo index
+app.get('/', async (req, res) => {
+  const produtos = await Produto.find()
+
+  // console.log(produtos);
+
+  if (req.query) {
+    const { busca } = req.query
+
+    Produto.findOne({ nome: busca })
+      .then((produto) => {
+        // console.log(produto)
+        if (produto) {
+          console.log(produto)
+          return res.redirect(`http://localhost:8088/usuarios/produtos/buscar/${produto._id}`)
+        } else {
+          console.log("produto não encontrado")
+          req.flash("error_msg", "Produto não encontrado")
+        }
+
+      })
+      .catch((err) => {
+        console.log(err)
+        req.flash("error_msg", "Ocorreu algum erro interno")
+        res.redirect('http://localhost:8088/usuarios')
+      })
+  }
+
+  res.render('index/index', { produtos }) //acessando a pasta para abrir o arquivo index
 })
 
 
@@ -76,8 +109,8 @@ app.use("/usuarios", usuarios)
 
 app.get('*', (req, res) => {
   res.render('404/404')
-   
-  
+
+
   // Substituir por redirecionamento para uma página '404' de admin (caso seja admin), ou '404' de usuário (caso seja usuário) ou uma '404' para não usuários (caso não esteja logado).
   // Em todos os casos, apresentar uma mensagem de erro, falando que a página procurada não existe.
 })

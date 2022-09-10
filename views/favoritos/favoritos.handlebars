@@ -3,7 +3,7 @@
     <div class="pro-container">
         {{#each produtos }}
         <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
-            <img src="../img/Adidas1.webp" alt="Produto">
+            <img src="{{ item.imageUrl }}" alt="Produto">
             <div class="descricao">
                 <span>{{ item.categoria }}</span>
                 <h5> {{ item.nome }} </h5>
@@ -17,8 +17,9 @@
                 <h4>R$ {{ item.preco }},00</h4>
             </div>
 
-            
-            <form action="http://localhost:8088/usuarios/carrinho/add-carrinho/{{_id}}" method="post">
+
+            <form action="http://localhost:8088/usuarios/carrinho/add-carrinho/{{item._id}}" method="post">
+                <input type="hidden" name="id" value="{{item._id}}">
                 <button type="submit" id="buttoon"> <i class="fal fa-shopping-cart cart"></i> </button>
             </form>
 

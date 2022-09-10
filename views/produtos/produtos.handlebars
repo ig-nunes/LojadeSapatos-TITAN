@@ -6,7 +6,7 @@
 
         {{#each produtos }}
         <div class="pro" onclick="window.location.href='./produtos/buscar/{{ _id }}'">
-            <img src="../img/Adidas1.webp" alt="Produto">
+            <img src="{{ imageUrl }}" alt="Produto">
             <div class="descricao">
                 <span>{{ categoria }}</span>
                 <h5> {{ nome }} </h5>
@@ -17,7 +17,7 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <h4>R$ {{ preco }},00</h4>
+                <h4>R$ {{ preco }}</h4>
             </div>
             <form action="http://localhost:8088/usuarios/carrinho/add-carrinho/{{_id}}" method="post">
                 <button type="submit" id="buttoon"> <i class="fal fa-shopping-cart cart"></i> </button>

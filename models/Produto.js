@@ -9,12 +9,21 @@ const Produto = new Schema({
     },
     preco: {
         type: Number,
-        required:true
+        required: true
     },
     quantEstoque: {
         type: Number,
         required: true
     },
+    imageUrl: {
+        type: String,
+        required: true,
+    },
+    imageFileName: {
+        type: String,
+        required: true
+    }
+    ,
     categoria: {
         type: String,
         enum: ['casual', 'esportivo', 'infantil']

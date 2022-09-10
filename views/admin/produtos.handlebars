@@ -7,13 +7,11 @@
 <div class="admin-container">
 {{#each produtos}}
             <div class="admin">
+                {{!-- <img src="{{ imageUrl }}" class="img-thumbnail" style="width: 50px; height: auto;" alt=""> --}}
                 <h4>Nome: {{ nome }}</h4>
                 <h4>Preço: {{ preco }}</h4>
                 <a href="http://localhost:8088/admin/produtos/buscar/{{_id}}" class="btn btn-success">Ver detalhes do produto</a>
                 <br>
-                {{!-- <h4>Quantidade em Estoque: {{ quantEstoque }}</h4>
-                <h4>Categoria: {{ categoria }}</h4>
-                <h4>Marca: {{ marca }}</h4> --}}
                 <a href="/admin/produtos/edit/{{_id}}"><button class="btn btn-success">Editar produto</button></a>
                 <br>
                 <form action="/admin/produtos/deletar" method="POST">

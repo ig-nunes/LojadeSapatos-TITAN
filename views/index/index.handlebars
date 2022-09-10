@@ -53,11 +53,12 @@
             <h2>Conheça nossos produtos</h2>
             <p>Conforto e qualidade você encontra aqui!</p>
             <div class="pro-container">
+                {{#each produtos}}
                 <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
-                    <img src="../img/Adidas1.webp" alt="Produto">
+                    <img src="{{ imageUrl }}" alt="Produto">
                     <div class="descricao">
-                        <span>esportivo</span>
-                        <h5> Adizero Boston 11 </h5>
+                        <span>{{ categoria }}</span>
+                        <h5> {{ nome }} </h5>
                         <div class="star">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -65,12 +66,13 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
-                        <h4>R$1.399,99</h4>
+                        <h4>R${{ preco }}</h4>
                     </div>
                     <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
                     <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
                 </div>
-                <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
+                {{/each }}
+                {{!-- <div class="pro" onclick="window.location.href='./detalhes-produto.html'">
                     <img src="../img/Adidas2.webp" alt="Produto">
                     <div class="descricao">
                         <span>esportivo</span>
@@ -256,7 +258,7 @@
                     </div>
                     <a href="carrinho.html"><i class="fal fa-shopping-cart cart"></i></a>
                     <a href="favoritos.html"><i class="fa fa-heart heart"></i></a>
-                </div>
+                </div> --}}
                 
             </div>
     </section>

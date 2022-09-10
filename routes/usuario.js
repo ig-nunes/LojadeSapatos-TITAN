@@ -11,6 +11,7 @@ const Cupom = mongoose.model('cupons')
 const Carrinho = require('../models/Carrinho')
 const Favorito = require('../models/Favorito')
 const { eAdmin } = require("../helpers/eAdmin")
+const { eUsuario } = require("../helpers/eUsuario")
 const bcrypt = require("bcryptjs")
 const passport = require("passport")
 require('../models/Faleconosco')
@@ -23,8 +24,11 @@ const Faleconosco = mongoose.model("faleConosco")
 
 // INDEX:
 // http://localhost:8088/usuarios
-router.get('/', (req, res) => {
-  // console.log(req.query)
+router.get('/', async (req, res) => {
+  const produtos = await Produto.find()
+
+  console.log(req.session);
+
   if (req.query) {
     const { busca } = req.query
 
@@ -47,7 +51,7 @@ router.get('/', (req, res) => {
       })
   }
 
-  res.render('index/index')
+  res.render('index/index', { produtos })
 })
 
 
@@ -152,7 +156,7 @@ router.get("/confirmarrecuperacaosenha", (req, res) => {
 })
 
 // CUPONS
-router.get('/cupons', (req, res) => {
+router.get('/cupons', eUsuario, (req, res) => {
   Cupom.find({}).then((cupons) => {
     res.render('cupons/cupons', { cupons })
   })
@@ -173,9 +177,11 @@ router.get("/sobrenos", (req, res) => {
 //  PRODUTOS:
 
 //http://localhost:8088/usuarios/produtos
-router.get('/produtos', (req, res) => {
+router.get('/produtos', eUsuario, (req, res) => {
   Produto.find({}).then((produtos) => {
-    console.log(req.session.favorito)
+    // produtos.forEach(p => {
+    //   p.preco = p.preco.toLocaleString('pt-br', {minimumFractionDigits: 2});
+    // })
     res.render('produtos/produtos', { produtos })
   }).catch((err) => {
     req.flash('error_msg', 'Houve um error ao listar os produtos')
@@ -184,7 +190,7 @@ router.get('/produtos', (req, res) => {
 })
 
 //http://localhost:8088/usuarios/produtos/buscar/:id
-router.get('/produtos/buscar/:id', async (req, res) => {
+router.get('/produtos/buscar/:id', eUsuario, async (req, res) => {
   let baixoEstoque = false
   let conteudo = false
   const { id } = req.params
@@ -199,13 +205,13 @@ router.get('/produtos/buscar/:id', async (req, res) => {
     baixoEstoque = true
   }
 
-  const produtos = await Produto.find({categoria: produto.categoria})
+  const produtos = await Produto.find({ categoria: produto.categoria })
   console.log(produtos)
 
   if (produtos.length != 0) {
     conteudo = true
   }
-  
+
   // console.log(baixoEstoque)
   // console.log(conteudo)
   res.render('produtos/detalhes-produto', { produto, produtos, conteudo, baixoEstoque })
@@ -237,45 +243,42 @@ router.get('/produtos/buscar/:id', async (req, res) => {
 // Carrinho
 
 // http://localhosto:8088/usuarios/carrinho/add-carrinho/:id            adicionar ao carrinho nos produtos
-router.post('/carrinho/add-carrinho/:id', async (req, res, next) => {
+router.post('/carrinho/add-carrinho/:id', eUsuario, async (req, res, next) => {
   const produtoId = req.params.id;
   var cart = new Carrinho(req.session.cart ? req.session.cart : {});
   const produto = await Produto.findById(produtoId);
   cart.add(produto, produto._id);
   req.session.cart = cart;
+
   req.session.cart.items[produtoId].price = produto.preco * req.session.cart.items[produtoId].quantity;
-  // if (req.session.favorito.items[produtoId]){
-  //   delete req.session.favorito.items[produtoId]
-  // }
+
   res.redirect('http://localhost:8088/usuarios/produtos')
 });
 
 
 // http://localhosto:8088/usuarios/carrinho/add-mais-carrinho/:id           Adicionar mais no próprio carrinho
-router.post('/carrinho/add-mais-carrinho/:id', async (req, res, next) => {
+router.post('/carrinho/add-mais-carrinho/:id', eUsuario, async (req, res, next) => {
   const produtoId = req.params.id;
   var cart = new Carrinho(req.session.cart ? req.session.cart : {});
   const produto = await Produto.findById(produtoId);
   cart.add(produto, produto._id);
   req.session.cart = cart;
+
   req.session.cart.items[produtoId].price = produto.preco * req.session.cart.items[produtoId].quantity;
-  // if (req.session.favorito.items[produtoId]){
-  //   delete req.session.favorito.items[produtoId]
-  // }
 
   res.redirect('http://localhost:8088/usuarios/carrinho')
 });
 
 
 // http://localhosto:8088/usuarios/carrinho
-router.get('/carrinho', async (req, res, next) => {
+router.get('/carrinho', eUsuario, async (req, res, next) => {
   let desconto = 0;
   let array = [];
   let totalDesconto = 0;
   let precoTotal = 0;
   req.session.precoTotal = 0;
 
-  // console.log(totalDesconto)
+
   if (req.session.totalDesconto == undefined) {
     req.session.totalDesconto = 0
   };
@@ -339,14 +342,13 @@ router.get('/carrinho', async (req, res, next) => {
     totalDesconto = req.session.totalDesconto
   }
 
-  console.log(req.session.favorito)
 
   res.render('carrinho/carrinho', { produtos: cart.getItems(), array, cart, totalDesconto, precoTotal });
 
 });
 
 // http://localhosto:8088/usuarios/carrinho/remover/:id
-router.post('/carrinho/remover/:id', async (req, res) => {
+router.post('/carrinho/remover/:id', eUsuario, async (req, res) => {
   const { id } = req.params;
   const produto = await Produto.findById(id);
   var cart = new Carrinho(req.session.cart ? req.session.cart : {});
@@ -368,7 +370,7 @@ router.post('/carrinho/remover/:id', async (req, res) => {
 });
 
 // http://localhosto:8088/usuarios/carrinho/finalizar-compra
-router.post('/carrinho/finalizar-compra', async (req, res, next) => {
+router.post('/carrinho/finalizar-compra', eUsuario, async (req, res, next) => {
   if (!req.body.array) {
     res.send('não há produtos no carrinho');
   } else {
@@ -407,7 +409,7 @@ router.post('/carrinho/finalizar-compra', async (req, res, next) => {
 
 
 // http://localhosto:8088/usuarios/favoritos
-router.post('/favoritos/add-favoritos/:id', async (req, res, next) => {
+router.post('/favoritos/add-favoritos/:id', eUsuario, async (req, res, next) => {
   const produtoId = req.params.id;
 
   var favorito = new Favorito(req.session.favorito ? req.session.favorito : {});
@@ -423,7 +425,7 @@ router.post('/favoritos/add-favoritos/:id', async (req, res, next) => {
 
 
 // http://localhosto:8088/usuarios/favoritos
-router.get('/favoritos', async (req, res, next) => {
+router.get('/favoritos', eUsuario, async (req, res, next) => {
   if (!req.session.favorito) {
     return res.render('favoritos/favoritos');
   }
@@ -437,7 +439,7 @@ router.get('/favoritos', async (req, res, next) => {
 
 
 // http://localhosto:8088/usuarios/favoritos/remover/:id
-router.post('/favoritos/remover/:id', (req, res) => {
+router.post('/favoritos/remover/:id', eUsuario, (req, res) => {
   const { id } = req.params;
   var favorito = new Favorito(req.session.favorito ? req.session.favorito : {});
 
