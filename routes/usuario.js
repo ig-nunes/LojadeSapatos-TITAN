@@ -27,7 +27,7 @@ const Faleconosco = mongoose.model("faleConosco")
 router.get('/', async (req, res) => {
   const produtos = await Produto.find()
 
-  console.log(req.session);
+  // console.log(req.session);
 
   if (req.query) {
     const { busca } = req.query
@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
       .then((produto) => {
         // console.log(produto)
         if (produto) {
-          console.log(produto)
+          // console.log(produto)
           return res.redirect(`http://localhost:8088/usuarios/produtos/buscar/${produto._id}`)
         } else {
           console.log("produto não encontrado")
@@ -206,7 +206,7 @@ router.get('/produtos/buscar/:id', eUsuario, async (req, res) => {
   }
 
   const produtos = await Produto.find({ categoria: produto.categoria })
-  console.log(produtos)
+  // console.log(produtos)
 
   if (produtos.length != 0) {
     conteudo = true
@@ -251,7 +251,7 @@ router.post('/carrinho/add-carrinho/:id', eUsuario, async (req, res, next) => {
   req.session.cart = cart;
 
   req.session.cart.items[produtoId].price = produto.preco * req.session.cart.items[produtoId].quantity;
-
+  req.flash("success_msg", "Adicionado ao carrinho com sucesso!")
   res.redirect('http://localhost:8088/usuarios/produtos')
 });
 
@@ -265,7 +265,7 @@ router.post('/carrinho/add-mais-carrinho/:id', eUsuario, async (req, res, next) 
   req.session.cart = cart;
 
   req.session.cart.items[produtoId].price = produto.preco * req.session.cart.items[produtoId].quantity;
-
+  req.flash("success_msg", `${produto.nome} incrementado ao carrinho com sucesso!`)
   res.redirect('http://localhost:8088/usuarios/carrinho')
 });
 
@@ -292,7 +292,7 @@ router.get('/carrinho', eUsuario, async (req, res, next) => {
   }
 
   if (req.query.cupom == undefined || req.query.cupom == null || !req.query.cupom) {
-    console.log('nenhum cupom adicionado');
+    console.log('Nenhum cupom adicionado');
   } else {
     const cupom = req.query.cupom.toUpperCase();
     const cupomEncontrado = await Cupom.findOne({ nome: cupom });
@@ -386,7 +386,7 @@ router.post('/carrinho/finalizar-compra', eUsuario, async (req, res, next) => {
       try {
         await Produto.findByIdAndUpdate(produto[0], { quantEstoque: estoque - Number(produto[1]) }, { runValidators: true })
         req.session.cart = {}
-        console.log(req.session.cart)
+        // console.log(req.session.cart)
       } catch (err) {
         // throw new Error(`Quantidade em estoque do produto ${item.nome} menor que a quantidade pedida!`)
         req.flash("error_msg", `Estoque insuficiente para o pedido sobre o item "${item.nome}". 
@@ -419,7 +419,7 @@ router.post('/favoritos/add-favoritos/:id', eUsuario, async (req, res, next) => 
   favorito.add(produto, produtoId);
 
   req.session.favorito = favorito;
-
+  req.flash("success_msg", `${produto.nome} adicionado a lista de desejos com sucesso!`)
   res.redirect('http://localhost:8088/usuarios/produtos')
 });
 
@@ -429,7 +429,7 @@ router.get('/favoritos', eUsuario, async (req, res, next) => {
   if (!req.session.favorito) {
     return res.render('favoritos/favoritos');
   }
-  console.log(req.session.favorito)
+  // console.log(req.session.favorito)
   var favorito = new Favorito(req.session.favorito);
   // console.log(req.session.favorito)
 
@@ -444,8 +444,8 @@ router.post('/favoritos/remover/:id', eUsuario, (req, res) => {
   var favorito = new Favorito(req.session.favorito ? req.session.favorito : {});
 
   favorito.remove(id);
-  console.log(favorito)
-  console.log(req.session.favorito)
+  // console.log(favorito)
+  // console.log(req.session.favorito)
   req.session.favorito = favorito;
   res.redirect('http://localhost:8088/usuarios/favoritos');
 });

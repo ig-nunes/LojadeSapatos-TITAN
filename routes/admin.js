@@ -35,7 +35,7 @@ router.get('/', eAdmin, async (req, res) => {
       .then((produto) => {
         // console.log(produto)
         if (produto) {
-          console.log(produto)
+          // console.log(produto)
           return res.redirect(`http://localhost:8088/admin/produtos/buscar/${produto._id}`)
         } else {
           console.log("produto não encontrado")
@@ -44,7 +44,7 @@ router.get('/', eAdmin, async (req, res) => {
 
       })
       .catch((err) => {
-        console.log(err)
+        // console.log(err)
         req.flash("error_msg", "Ocorreu algum erro interno")
         res.redirect('http://localhost:8088/admin')
       })
@@ -245,7 +245,7 @@ router.post('/produtos/novo', upload.single('image'), (req, res, next) => {
     }
 
     new Produto(novoProduto).save().then(() => {
-      console.log(novoProduto)
+      // console.log(novoProduto)
       req.flash('sucess_msg', 'Produto criado com sucesso!')
       res.redirect('/admin/produtos')
       console.log('Produto salvo com sucesso')
@@ -356,7 +356,7 @@ router.get('/carrinho', async (req, res, next) => {
   }
 
   if (req.query.cupom == undefined || req.query.cupom == null || !req.query.cupom) {
-    console.log('nenhum cupom adicionado');
+    console.log('Nenhum cupom adicionado');
   } else {
     const cupom = req.query.cupom.toUpperCase();
     const cupomEncontrado = await Cupom.findOne({ nome: cupom });
@@ -426,7 +426,7 @@ router.post('/carrinho/finalizar-compra', async (req, res, next) => {
       try {
         await Produto.findByIdAndUpdate(produto[0], { quantEstoque: estoque - Number(produto[1]) }, { runValidators: true })
         req.session.cart = {}
-        console.log(req.session.cart)
+        // console.log(req.session.cart)
       } catch (err) {
         // throw new Error(`Quantidade em estoque do produto ${item.nome} menor que a quantidade pedida!`)
         req.flash("error_msg", `Estoque insuficiente para o pedido sobre o item "${item.nome}". 
@@ -469,7 +469,7 @@ router.get('/favoritos', async (req, res, next) => {
 
   var favorito = new Favorito(req.session.favorito);
   // console.log(favorito);
-  console.log(req.session.favorito)
+  // console.log(req.session.favorito)
 
   res.render('admin/favorito', { produtos: favorito.getItems() });
 

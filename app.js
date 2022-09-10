@@ -51,7 +51,7 @@ app.set('view engine', 'handlebars')
 
 //Mongoose
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost/aligustore").then(() => {
+mongoose.connect("mongodb://localhost/teste2").then(() => {
   console.log("Conectado ao Mongo")
 }).catch((err) => {
   console.log("ERRO AO SE CONECTAR AO MONGO, VERIFIQUE SE ESTA INSTALAR!")
@@ -81,7 +81,7 @@ app.get('/', async (req, res) => {
           console.log(produto)
           return res.redirect(`http://localhost:8088/usuarios/produtos/buscar/${produto._id}`)
         } else {
-          console.log("produto não encontrado")
+          // console.log("produto não encontrado")
           req.flash("error_msg", "Produto não encontrado")
         }
 

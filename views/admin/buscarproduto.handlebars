@@ -3,24 +3,24 @@
 <hr>
 
 {{#with produto}}
-<div class="card">
-    <div class="card-body">
+<div class="admin-container d-flex justify-content-center">
+    <div class="admin" style="height: 550px;">
         <img src="{{ imageUrl }}" class="img-thumbnail" style="width: 100px; height: auto;" alt="">
         <h4>Nome: {{ nome }}</h4>
         <h4>preco: {{ preco }}</h4>
         <h4>Quantidade em Estoque: {{ quantEstoque }}</h4>
         <h4>Categoria: {{ categoria }}</h4>
         <h4>Marca: {{ marca }}</h4>
-        <a href="/admin/produtos/edit/{{_id}}"><button class="btn btn-success">Editar produto</button></a>
-        <form action="/admin/produtos/deletar" method="POST">
-            <input type="hidden" name="id" value="{{_id}}">
-            <button type="submit" class="btn btn-danger">Deletar produto</button>
-        </form>
+        <a href="/admin/produtos/edit/{{_id}}"><button style="margin-bottom: 10px; background-color: #5a8dcc;" class="btn btn-success">Editar produto</button></a>
         <form action="/admin/carrinho/add-carrinho/{{_id}}" method="post">
-            <button type="submit">Adicionar ao carrinho</button>
+            <button style="margin-bottom: 10px;" class="btn btn-success" type="submit">Adicionar ao carrinho</button>
         </form>
         <form action="/admin/favoritos/add-favoritos/{{_id}}" method="post">
-            <button type="submit">Adicionar aos favoritos</button>
+            <button style="margin-bottom: 10px;" class="btn btn-success" type="submit">Adicionar aos favoritos</button>
+        </form>
+        <form action="/admin/produtos/deletar" method="POST">
+            <input type="hidden" name="id" value="{{_id}}">
+            <button style="margin-bottom: 10px;" type="submit" class="btn btn-danger">Deletar produto</button>
         </form>
     </div>
 </div>
