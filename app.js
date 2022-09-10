@@ -51,7 +51,7 @@ app.set('view engine', 'handlebars')
 
 //Mongoose
 mongoose.Promise = global.Promise
-mongoose.connect("mongodb://localhost/teste2").then(() => {
+mongoose.connect("mongodb://localhost/aliglustore").then(() => {
   console.log("Conectado ao Mongo")
 }).catch((err) => {
   console.log("ERRO AO SE CONECTAR AO MONGO, VERIFIQUE SE ESTA INSTALAR!")
