@@ -396,7 +396,7 @@ router.post('/carrinho/finalizar-compra', eUsuario, async (req, res, next) => {
       }
     }
 
-    res.redirect('http://localhost:8088/usuarios/produtos');
+    res.redirect('http://localhost:8088/usuarios/carrinho');
   }
 })
 
